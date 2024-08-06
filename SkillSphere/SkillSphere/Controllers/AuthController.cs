@@ -21,7 +21,16 @@ namespace Skillsphere.API.Controllers
             {
                 return BadRequest(result.Errors);
             }
-            return Ok(new { result.Token });
+
+            // Set the JWT token in an HttpOnly cookie
+            Response.Cookies.Append("token", result.Token!, new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true, // Ensure this is only used over HTTPS
+                SameSite = SameSiteMode.Strict
+            });
+
+            return Ok();
         }
 
         [HttpPost("register-creator")]
@@ -32,7 +41,15 @@ namespace Skillsphere.API.Controllers
             {
                 return BadRequest(result.Errors);
             }
-            return Ok(new { result.Token });
+
+            Response.Cookies.Append("token", result.Token!, new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true, 
+                SameSite = SameSiteMode.Strict
+            });
+
+            return Ok();
         }
 
         [HttpPost("login")]
@@ -43,7 +60,15 @@ namespace Skillsphere.API.Controllers
             {
                 return BadRequest(result.Errors);
             }
-            return Ok(new { result.Token });
+
+            Response.Cookies.Append("token", result.Token!, new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.Strict
+            });
+
+            return Ok(new {role = result.Role});
         }
     }
 }
