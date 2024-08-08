@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\A Final Project\\SkillSphere\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj": {}
+    "C:\\A Final Project\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj": {}
   },
   "projects": {
-    "C:\\A Final Project\\SkillSphere\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj": {
+    "C:\\A Final Project\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\A Final Project\\SkillSphere\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj",
+        "projectUniqueName": "C:\\A Final Project\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj",
         "projectName": "SkillSphere.Core",
-        "projectPath": "C:\\A Final Project\\SkillSphere\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj",
+        "projectPath": "C:\\A Final Project\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj",
         "packagesPath": "C:\\Users\\shrey\\.nuget\\packages\\",
-        "outputPath": "C:\\A Final Project\\SkillSphere\\SkillSphere\\SkillSphere.core\\obj\\",
+        "outputPath": "C:\\A Final Project\\SkillSphere\\SkillSphere.core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\shrey\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -83,14 +83,14 @@
         }
       }
     },
-    "C:\\A Final Project\\SkillSphere\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj": {
+    "C:\\A Final Project\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\A Final Project\\SkillSphere\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj",
+        "projectUniqueName": "C:\\A Final Project\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj",
         "projectName": "SkillSphere.Services",
-        "projectPath": "C:\\A Final Project\\SkillSphere\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj",
+        "projectPath": "C:\\A Final Project\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj",
         "packagesPath": "C:\\Users\\shrey\\.nuget\\packages\\",
-        "outputPath": "C:\\A Final Project\\SkillSphere\\SkillSphere\\SkillSphere.Services\\obj\\",
+        "outputPath": "C:\\A Final Project\\SkillSphere\\SkillSphere.Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\shrey\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -108,8 +108,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\A Final Project\\SkillSphere\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj": {
-                "projectPath": "C:\\A Final Project\\SkillSphere\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj"
+              "C:\\A Final Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj": {
+                "projectPath": "C:\\A Final Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj"
               }
             }
           }

@@ -1,6 +1,5 @@
 ﻿using Skillsphere.Core.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+
 
 namespace SkillSphere.Core.Interfaces
 {
@@ -13,5 +12,12 @@ namespace SkillSphere.Core.Interfaces
         Task CreateCourseAsync(Course course);
         Task UpdateCourseAsync(Course course);
         Task DeleteCourseAsync(int id);
+        Task AddModuleAsync(Module module);
+        Task<Module> GetModuleByIdAsync(int id);
+        Task UpdateModuleAsync(Module module);
+        Task DeleteModuleAsync(int id);
+        Task AddVideoAsync(Video video);
+        Task UpdateVideoAsync(Video video);
+        Task DeleteVideoAsync(int id);
     }
 }

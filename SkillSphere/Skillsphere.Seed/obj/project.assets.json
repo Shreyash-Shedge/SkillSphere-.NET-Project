@@ -4393,11 +4393,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\A Final Project\\SkillSphere\\SkillSphere\\Skillsphere.Seed\\Skillsphere.Seed.csproj",
+      "projectUniqueName": "C:\\A Final Project\\SkillSphere\\Skillsphere.Seed\\Skillsphere.Seed.csproj",
       "projectName": "Skillsphere.Seed",
-      "projectPath": "C:\\A Final Project\\SkillSphere\\SkillSphere\\Skillsphere.Seed\\Skillsphere.Seed.csproj",
+      "projectPath": "C:\\A Final Project\\SkillSphere\\Skillsphere.Seed\\Skillsphere.Seed.csproj",
       "packagesPath": "C:\\Users\\shrey\\.nuget\\packages\\",
-      "outputPath": "C:\\A Final Project\\SkillSphere\\SkillSphere\\Skillsphere.Seed\\obj\\",
+      "outputPath": "C:\\A Final Project\\SkillSphere\\Skillsphere.Seed\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\shrey\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4415,11 +4415,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\A Final Project\\SkillSphere\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj": {
-              "projectPath": "C:\\A Final Project\\SkillSphere\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj"
+            "C:\\A Final Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj": {
+              "projectPath": "C:\\A Final Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj"
             },
-            "C:\\A Final Project\\SkillSphere\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj": {
-              "projectPath": "C:\\A Final Project\\SkillSphere\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj"
+            "C:\\A Final Project\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj": {
+              "projectPath": "C:\\A Final Project\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj"
             }
           }
         }

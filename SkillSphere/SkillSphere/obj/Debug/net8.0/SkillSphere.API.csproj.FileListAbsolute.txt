@@ -309,3 +309,5 @@ C:\A Final Project\SkillSphere\SkillSphere\SkillSphere\obj\Debug\net8.0\SkillSph
 C:\A Final Project\SkillSphere\SkillSphere\SkillSphere\obj\Debug\net8.0\SkillSphere.API.genruntimeconfig.cache
 C:\A Final Project\SkillSphere\SkillSphere\SkillSphere\obj\Debug\net8.0\ref\SkillSphere.API.dll
 C:\A Final Project\SkillSphere\SkillSphere\SkillSphere\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\A Final Project\SkillSphere\SkillSphere\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\A Final Project\SkillSphere\SkillSphere\bin\Debug\net8.0\SkillSphere.API.staticwebassets.runtime.json

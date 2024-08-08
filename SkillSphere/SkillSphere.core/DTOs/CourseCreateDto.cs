@@ -20,8 +20,6 @@ namespace SkillSphere.Core.DTOs
         [Required]
         public decimal Price { get; set; }
 
-        [Required]
-        public List<ModuleDto>? Modules { get; set; }
     }
 
 }

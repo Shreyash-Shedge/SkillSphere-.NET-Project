@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SkillSphere.Core.DTOs
 {
-    public class VideoDto
+    public class VideoUpdateDto
     {
         [Required]
         [StringLength(150)]

@@ -15,6 +15,7 @@ using SkillSphere.Core.Models;
 using SkillSphere.Infrastructure.Repositories;
 using SkillSphere.Services;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace SkillSphere
 {
@@ -73,7 +74,10 @@ namespace SkillSphere
 
             // 5. Add Controllers
             // Add controllers as services for dependency injection
-            builder.Services.AddControllers();
+            builder.Services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+            });
 
             // 6. Add Scoped Services
             // Register our custom services and repositories for dependency injection

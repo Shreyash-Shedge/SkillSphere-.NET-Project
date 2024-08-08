@@ -50,5 +50,40 @@ namespace SkillSphere.Services
         {
             await _courseRepository.DeleteCourseAsync(id);
         }
+
+        public async Task AddModuleAsync(Module module)
+        {
+            await _courseRepository.AddModuleAsync(module);
+        }
+
+        public async Task<Module> GetModuleByIdAsync(int id)
+        {
+            return await _courseRepository.GetModuleByIdAsync(id);
+        }
+
+        public async Task UpdateModuleAsync(Module module)
+        {
+            await _courseRepository.UpdateModuleAsync(module);
+        }
+
+        public async Task DeleteModuleAsync(int id)
+        {
+            await _courseRepository.DeleteModuleAsync(id);
+        }
+
+        public async Task AddVideoAsync(Video video)
+        {
+            await _courseRepository.AddVideoAsync(video);
+        }
+
+        public async Task UpdateVideoAsync(Video video)
+        {
+            await _courseRepository.UpdateVideoAsync(video);
+        }
+
+        public async Task DeleteVideoAsync(int id)
+        {
+            await _courseRepository.DeleteVideoAsync(id);
+        }
     }
 }

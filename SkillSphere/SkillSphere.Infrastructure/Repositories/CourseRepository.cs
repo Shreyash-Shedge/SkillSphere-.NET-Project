@@ -63,10 +63,81 @@ namespace SkillSphere.Infrastructure.Repositories
 
         public async Task DeleteCourseAsync(int id)
         {
-            var course = await _context.Courses.FindAsync(id);
+            var course = await _context.Courses
+                                       .Include(c => c.Modules)
+                                       .ThenInclude(m => m.Videos)
+                                       .FirstOrDefaultAsync(c => c.Id == id);
             if (course != null)
             {
+                foreach (var module in course.Modules)
+                {
+                    foreach (var video in module.Videos)
+                    {
+                        if (System.IO.File.Exists(video.FilePath))
+                        {
+                            System.IO.File.Delete(video.FilePath);
+                        }
+                    }
+                }
                 _context.Courses.Remove(course);
+            }
+        }
+
+        public async Task AddModuleAsync(Module module)
+        {
+            await _context.Modules.AddAsync(module);
+        }
+
+        public async Task<Module> GetModuleByIdAsync(int id)
+        {
+            return await _context.Modules
+                                 .Include(m => m.Videos)
+                                 .FirstOrDefaultAsync(m => m.Id == id);
+        }
+
+        public async Task UpdateModuleAsync(Module module)
+        {
+            _context.Modules.Update(module);
+        }
+
+        public async Task DeleteModuleAsync(int id)
+        {
+            var module = await _context.Modules
+                                       .Include(m => m.Videos)
+                                       .FirstOrDefaultAsync(m => m.Id == id);
+            if (module != null)
+            {
+                foreach (var video in module.Videos)
+                {
+                    if (System.IO.File.Exists(video.FilePath))
+                    {
+                        System.IO.File.Delete(video.FilePath);
+                    }
+                }
+                _context.Modules.Remove(module);
+            }
+        }
+
+        public async Task AddVideoAsync(Video video)
+        {
+            await _context.Videos.AddAsync(video);
+        }
+
+        public async Task UpdateVideoAsync(Video video)
+        {
+            _context.Videos.Update(video);
+        }
+
+        public async Task DeleteVideoAsync(int id)
+        {
+            var video = await _context.Videos.FindAsync(id);
+            if (video != null)
+            {
+                if (System.IO.File.Exists(video.FilePath))
+                {
+                    System.IO.File.Delete(video.FilePath);
+                }
+                _context.Videos.Remove(video);
             }
         }
     }

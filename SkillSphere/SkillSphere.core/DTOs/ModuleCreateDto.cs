@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace SkillSphere.Core.DTOs
 {
-    public class ModuleDto
+    public class ModuleCreateDto
+
     {
         [Required]
         [StringLength(150)]
@@ -15,7 +16,5 @@ namespace SkillSphere.Core.DTOs
 
         public string? Content { get; set; }
 
-        [Required]
-        public List<VideoDto>? Videos { get; set; }
     }
 }
