@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SkillSphere.Core.DTOs;
 
 namespace SkillSphere.Core.Interfaces
 {
-    internal class IPaymentService
+    public interface IPaymentService
     {
+        Task<PaymentResponse> CreatePaymentOrderAsync(int userId, int courseId, decimal amount);
+        Task<bool> VerifyPaymentAsync(string paymentId, string orderId, string signature);
     }
 }

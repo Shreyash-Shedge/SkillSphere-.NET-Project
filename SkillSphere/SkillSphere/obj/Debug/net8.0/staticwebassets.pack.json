@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\A Final Project\\SkillSphere\\SkillSphere\\wwwroot\\uploads\\WhatsApp Video 2023-11-09 at 3.17.45 PM.mp4",
+      "PackagePath": "staticwebassets\\uploads\\WhatsApp Video 2023-11-09 at 3.17.45 PM.mp4"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.SkillSphere.API.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.SkillSphere.API.props",
+      "PackagePath": "build\\SkillSphere.API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.SkillSphere.API.props",
+      "PackagePath": "buildMultiTargeting\\SkillSphere.API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.SkillSphere.API.props",
+      "PackagePath": "buildTransitive\\SkillSphere.API.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

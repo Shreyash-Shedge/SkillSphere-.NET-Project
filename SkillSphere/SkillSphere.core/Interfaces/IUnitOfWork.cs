@@ -6,6 +6,8 @@ namespace Skillsphere.Core.Interfaces
     {
         IUserRepository Users { get; }
         ICreatorRepository Creators { get; }
+        ICourseRepository Courses { get; }
+        IPurchaseRepository Purchases { get; }
         Task<int> CompleteAsync();
     }
 }
