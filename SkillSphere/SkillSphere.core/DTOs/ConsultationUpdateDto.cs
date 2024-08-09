@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SkillSphere.Core.Interfaces
+namespace SkillSphere.Core.DTOs
 {
-    internal class IWorkshopRepository
+    public class ConsultationUpdateDto : ConsultationAddDto
+
     {
+
     }
 }

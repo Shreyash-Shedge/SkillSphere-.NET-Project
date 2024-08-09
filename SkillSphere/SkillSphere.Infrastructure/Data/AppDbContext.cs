@@ -17,6 +17,8 @@ namespace Skillsphere.Infrastructure.Data
         public DbSet<Video> Videos { get; set; }
         public DbSet<Purchase> Purchases { get; set; }
 
+        public DbSet<Consultation> Consultations { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

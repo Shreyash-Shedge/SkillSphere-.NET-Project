@@ -1,39 +1,11 @@
 {
   "Version": 1,
-  "Hash": "MxaBoq4byyuHdmG2OKpKbk9x+Wp4LVZ3TtR8wK93Cww=",
+  "Hash": "8sWjlNKghvFLa2In+z+Ns2GPppG7HeSX7rbCECyODyE=",
   "Source": "SkillSphere.API",
   "BasePath": "_content/SkillSphere.API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [
-    {
-      "Name": "SkillSphere.API\\wwwroot",
-      "Source": "SkillSphere.API",
-      "ContentRoot": "C:\\A Final Project\\SkillSphere\\SkillSphere\\wwwroot\\",
-      "BasePath": "_content/SkillSphere.API",
-      "Pattern": "**"
-    }
-  ],
-  "Assets": [
-    {
-      "Identity": "C:\\A Final Project\\SkillSphere\\SkillSphere\\wwwroot\\uploads\\WhatsApp Video 2023-11-09 at 3.17.45 PM.mp4",
-      "SourceId": "SkillSphere.API",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\A Final Project\\SkillSphere\\SkillSphere\\wwwroot\\",
-      "BasePath": "_content/SkillSphere.API",
-      "RelativePath": "uploads/WhatsApp Video 2023-11-09 at 3.17.45 PM.mp4",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\WhatsApp Video 2023-11-09 at 3.17.45 PM.mp4"
-    }
-  ]
+  "DiscoveryPatterns": [],
+  "Assets": []
 }
