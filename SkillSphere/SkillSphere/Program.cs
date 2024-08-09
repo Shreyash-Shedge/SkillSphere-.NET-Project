@@ -16,7 +16,6 @@ using SkillSphere.Infrastructure.Repositories;
 using SkillSphere.Services;
 using System.Text;
 using System.Text.Json.Serialization;
-using Microsoft.Extensions.FileProviders;
 
 namespace SkillSphere
 {
@@ -31,10 +30,12 @@ namespace SkillSphere
             builder.Logging.AddConsole();
 
             // 1. Connection to Database
+            // Configure the DbContext to use SQL Server with the connection string from appsettings.json
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             // 2. Adding Identity
+            // Configure Identity to use our custom User class and set password requirements
             builder.Services.AddIdentity<User, IdentityRole<int>>(options =>
             {
                 options.Password.RequireDigit = true;
@@ -47,6 +48,7 @@ namespace SkillSphere
             .AddDefaultTokenProviders();
 
             // 3. JWT authentication
+            // Configure JWT authentication with the settings from appsettings.json
             builder.Services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -67,26 +69,35 @@ namespace SkillSphere
             });
 
             // 4. Register AutoMapper
+            // Register AutoMapper with the specified profile
             builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 
             // 5. Add Controllers
+            // Add controllers as services for dependency injection
             builder.Services.AddControllers().AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
             });
 
             // 6. Add Scoped Services
+            // Register our custom services and repositories for dependency injection
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<ICourseRepository, CourseRepository>();
             builder.Services.AddScoped<IPurchaseRepository, PurchaseRepository>();
             builder.Services.AddScoped<CourseService>();
             builder.Services.AddScoped<PurchaseService>();
+            builder.Services.AddScoped<IConsultationService, ConsultationService>();
+            builder.Services.AddScoped<IConsultationRepository, ConsultationRepository>();
+
+            // Register RazorpayPaymentService and ensure HttpClient is available for dependency injection
             builder.Services.AddScoped<IPaymentService, RazorpayPaymentService>();
-            builder.Services.AddHttpClient<IPaymentService, RazorpayPaymentService>();
+            builder.Services.AddHttpClient<IPaymentService, RazorpayPaymentService>(); // Added HttpClient registration
+
+            // Add Razorpay configuration from appsettings.json
             builder.Services.Configure<RazorpaySettings>(builder.Configuration.GetSection("Razorpay"));
 
-            // 7. Add Swagger
+            // 7. Add Swagger for API documentation ( StackOverFlow)
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(c =>
             {
@@ -100,6 +111,7 @@ namespace SkillSphere
                     BearerFormat = "JWT",
                     In = ParameterLocation.Header,
                     Description = "JWT Authorization header using the Bearer scheme."
+
                 });
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
@@ -118,16 +130,18 @@ namespace SkillSphere
             });
 
             // 8. Adding CORS policy
+            // Configure CORS to allow requests from specified origins
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy", builder =>
-                    builder.WithOrigins("http://localhost:3000")
+                    builder.WithOrigins("http://localhost:3000") // Add specific origin
                            .AllowAnyMethod()
                            .AllowAnyHeader()
                            .AllowCredentials());
             });
 
             // 9. Add Authorization policies
+            // Configure authorization policies for roles
             builder.Services.AddAuthorization(options =>
             {
                 options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
@@ -155,12 +169,12 @@ namespace SkillSphere
 
             app.UseHttpsRedirection();
 
-            // Adding static file support
-            app.UseStaticFiles();
-
             // Adding routing + CORS + authentication + authorization
             app.UseRouting();
+
+            // Use CORS
             app.UseCors("CorsPolicy");
+
             app.UseAuthentication();
             app.UseAuthorization();
 
