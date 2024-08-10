@@ -15,6 +15,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\SkillSphere.Core\SkillSphere.Core.csproj" />
+		<ProjectReference Include="..\SkillSphere.Infrastructure\SkillSphere.Infrastructure.csproj" />
 	</ItemGroup>
 
 </Project>

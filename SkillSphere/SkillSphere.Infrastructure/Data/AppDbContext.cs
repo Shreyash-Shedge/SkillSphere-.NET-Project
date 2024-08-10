@@ -17,6 +17,8 @@ namespace Skillsphere.Infrastructure.Data
         public DbSet<Video> Videos { get; set; }
         public DbSet<Purchase> Purchases { get; set; }
 
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -55,6 +57,13 @@ namespace Skillsphere.Infrastructure.Data
                 .WithMany()
                 .HasForeignKey(p => p.CourseId)
                 .OnDelete(DeleteBehavior.NoAction);
+
+            // Define the relationship between RefreshToken and User
+            builder.Entity<RefreshToken>()
+               .HasOne(rt => rt.User)
+               .WithMany(u => u.RefreshTokens) // Assuming a User can have multiple refresh tokens
+               .HasForeignKey(rt => rt.UserId)
+               .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

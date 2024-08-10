@@ -1044,6 +1044,7 @@
           "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.1",
           "Newtonsoft.Json": "13.0.3",
           "SkillSphere.Core": "1.0.0",
+          "SkillSphere.Infrastructure": "1.0.0",
           "System.IdentityModel.Tokens.Jwt": "8.0.1"
         },
         "runtime": {

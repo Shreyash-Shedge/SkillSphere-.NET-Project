@@ -9,6 +9,13 @@ import UserSignUp from "./pages/UserSignUp";
 import CreatorSignUp from "./pages/CreatorSignUp";
 import UserDashboard from "./components/User/UserDashboard";
 import CreatorDashboard from "./components/Creator/CreatorDashboard";
+import CreatorCourses from "./components/Creator/CreaterCourses";
+import CreatorProfile from "./components/Creator/CreatorProfile";
+import CreatorConsultations from "./components/Creator/CreatorConsultations";
+import EditCourse from "./components/Courses/EditCourse";
+import EditModules from "./components/Courses/EditModules";
+import CourseList from "./components/Courses/CourseList";
+import CreateCourseForm from "./components/Courses/CreateCourseForm";
 
 const appRouter = createBrowserRouter([
   {
@@ -35,6 +42,32 @@ const appRouter = createBrowserRouter([
       {
         path: "creator-dashboard",
         element: <CreatorDashboard />,
+        children: [
+          {
+            path: "courses",
+            element: <CourseList />,
+          },
+          {
+            path: "courses/create-courses",
+            element: <CreateCourseForm />,
+          },
+          {
+            path: "courses/:courseId",
+            element: <EditCourse />,
+          },
+          {
+            path: "courses/:courseId/:moduleId",
+            element: <EditModules />,
+          },
+          {
+            path: "profile",
+            element: <CreatorProfile />,
+          },
+          {
+            path: "consultations",
+            element: <CreatorConsultations />,
+          },
+        ],
       },
       {
         path: "signin",

@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
+import { clearAuthData } from "../../store/authSlice";
 
 const navigation = [
   { name: "Courses", href: "#" },
@@ -18,6 +21,14 @@ const logoStyle = {
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const token = useSelector((state) => state.auth.token);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(clearAuthData());
+    navigate("/"); // Navigate to homepage after logout
+  };
 
   return (
     <header className="absolute inset-x-0 top-0 z-50">
@@ -35,8 +46,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(true)}
-            className="bg-white -m-2.5 inline-flex items-center justify-center rounded-md p-2.5 
-            text-gray-700"
+            className="bg-white -m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
           >
             <span className="sr-only">Open main menu</span>
             <Bars3Icon aria-hidden="true" className="h-6 w-6" />
@@ -54,12 +64,21 @@ export default function Navbar() {
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link
-            to="/signin"
-            className="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600"
-          >
-            Sign in <span aria-hidden="true">&rarr;</span>
-          </Link>
+          {token ? (
+            <button
+              onClick={handleLogout}
+              className="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600"
+            >
+              Logout
+            </button>
+          ) : (
+            <Link
+              to="/signin"
+              className="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600"
+            >
+              Sign in <span aria-hidden="true">&rarr;</span>
+            </Link>
+          )}
         </div>
       </nav>
       <Dialog
@@ -101,12 +120,21 @@ export default function Navbar() {
                 ))}
               </div>
               <div className="py-6">
-                <Link
-                  to="/signin"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-600"
-                >
-                  Log in
-                </Link>
+                {token ? (
+                  <button
+                    onClick={handleLogout}
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-600"
+                  >
+                    Logout
+                  </button>
+                ) : (
+                  <Link
+                    to="/signin"
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-600"
+                  >
+                    Sign in
+                  </Link>
+                )}
               </div>
             </div>
           </div>

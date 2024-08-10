@@ -246,6 +246,36 @@ namespace SkillSphere.Infrastructure.Migrations
                     b.ToTable("Modules");
                 });
 
+            modelBuilder.Entity("Skillsphere.Core.Models.RefreshToken", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ExpiryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsRevoked")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("RefreshTokens");
+                });
+
             modelBuilder.Entity("Skillsphere.Core.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -468,6 +498,17 @@ namespace SkillSphere.Infrastructure.Migrations
                     b.Navigation("Course");
                 });
 
+            modelBuilder.Entity("Skillsphere.Core.Models.RefreshToken", b =>
+                {
+                    b.HasOne("Skillsphere.Core.Models.User", "User")
+                        .WithMany("RefreshTokens")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Skillsphere.Core.Models.Video", b =>
                 {
                     b.HasOne("Skillsphere.Core.Models.Module", "Module")
@@ -487,6 +528,11 @@ namespace SkillSphere.Infrastructure.Migrations
             modelBuilder.Entity("Skillsphere.Core.Models.Module", b =>
                 {
                     b.Navigation("Videos");
+                });
+
+            modelBuilder.Entity("Skillsphere.Core.Models.User", b =>
+                {
+                    b.Navigation("RefreshTokens");
                 });
 #pragma warning restore 612, 618
         }

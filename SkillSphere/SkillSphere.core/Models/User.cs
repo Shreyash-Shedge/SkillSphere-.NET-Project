@@ -10,5 +10,7 @@ namespace Skillsphere.Core.Models
         public string? Name { get; set; }
 
         public string? Role { get; set; }
+
+        public ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
     }
 }

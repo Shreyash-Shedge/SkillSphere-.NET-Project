@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "O2Cpc0y+5xQ=",
+  "dgSpecHash": "f7hPJFl2/og=",
   "success": true,
-  "projectFilePath": "C:\\A Final Project\\SkillSphere\\SkillSphere\\SkillSphere.API.csproj",
+  "projectFilePath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere\\SkillSphere.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\shrey\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\shrey\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",

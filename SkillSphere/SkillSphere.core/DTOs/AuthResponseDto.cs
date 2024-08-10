@@ -7,6 +7,7 @@ namespace Skillsphere.Core.DTOs
         public bool IsSuccess { get; set; }
         public string? Token { get; set; }
         public string? Role { get; set; }
+        public string? RefreshToken { get; set; }
         public IEnumerable<string>? Errors { get; set; }
 
         public string? Name { get; set; }

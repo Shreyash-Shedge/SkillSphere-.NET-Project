@@ -5,13 +5,16 @@ using Microsoft.IdentityModel.Tokens;
 using Skillsphere.Core.DTOs;
 using Skillsphere.Core.Interfaces;
 using Skillsphere.Core.Models;
+using Skillsphere.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Skillsphere.Services
 {
@@ -20,12 +23,14 @@ namespace Skillsphere.Services
         private readonly UserManager<User> _userManager;
         private readonly IMapper _mapper;
         private readonly IConfiguration _configuration;
+        private readonly AppDbContext _dbContext;
 
-        public AuthService(UserManager<User> userManager, IMapper mapper, IConfiguration configuration)
+        public AuthService(UserManager<User> userManager, IMapper mapper, IConfiguration configuration, AppDbContext dbContext)
         {
             _userManager = userManager;
             _mapper = mapper;
             _configuration = configuration;
+            _dbContext = dbContext;
         }
 
         public async Task<AuthResponseDto> RegisterUserAsync(RegisterDto registerDto)
@@ -43,7 +48,10 @@ namespace Skillsphere.Services
             await _userManager.AddToRoleAsync(user, "User");
 
             var token = GenerateJwtToken(user, "User");
-            return new AuthResponseDto { IsSuccess = true, Token = token, Role = "User", UserId = user.Id, Name = user.Name }; // Added UserId
+            var refreshToken = GenerateRefreshToken();
+            await StoreRefreshToken(user.Id, refreshToken);
+
+            return new AuthResponseDto { IsSuccess = true, Token = token, RefreshToken = refreshToken, Role = "User", UserId = user.Id, Name = user.Name };
         }
 
         public async Task<AuthResponseDto> RegisterCreatorAsync(RegisterCreatorDto registerCreatorDto)
@@ -61,7 +69,10 @@ namespace Skillsphere.Services
             await _userManager.AddToRoleAsync(creator, "Creator");
 
             var token = GenerateJwtToken(creator, "Creator");
-            return new AuthResponseDto { IsSuccess = true, Token = token, Role = "Creator", CreatorId = creator.Id, Name = registerCreatorDto.Name }; // Added CreatorId
+            var refreshToken = GenerateRefreshToken();
+            await StoreRefreshToken(creator.Id, refreshToken);
+
+            return new AuthResponseDto { IsSuccess = true, Token = token, RefreshToken = refreshToken, Role = "Creator", CreatorId = creator.Id, Name = creator.Name };
         }
 
         public async Task<AuthResponseDto> RegisterAdminAsync(RegisterDto registerDto)
@@ -79,7 +90,10 @@ namespace Skillsphere.Services
             await _userManager.AddToRoleAsync(admin, "Admin");
 
             var token = GenerateJwtToken(admin, "Admin");
-            return new AuthResponseDto { IsSuccess = true, Token = token, Role = "Admin", AdminId = admin.Id,Name = admin.Name }; // Added AdminId
+            var refreshToken = GenerateRefreshToken();
+            await StoreRefreshToken(admin.Id, refreshToken);
+
+            return new AuthResponseDto { IsSuccess = true, Token = token, RefreshToken = refreshToken, Role = "Admin", AdminId = admin.Id, Name = admin.Name };
         }
 
         public async Task<AuthResponseDto> LoginAsync(LoginDto loginDto)
@@ -87,32 +101,67 @@ namespace Skillsphere.Services
             var user = await _userManager.FindByEmailAsync(loginDto.Email!);
             if (user == null || !await _userManager.CheckPasswordAsync(user, loginDto.Password!))
             {
-                return new AuthResponseDto { IsSuccess = false, Errors = ["Invalid login attempt"] };
+                return new AuthResponseDto { IsSuccess = false, Errors = new[] { "Invalid login attempt" } };
             }
 
-            // Retrieve roles for the user
-            var roles = await _userManager.GetRolesAsync(user); // Added to fetch roles
-            var role = roles.FirstOrDefault(); // Get the first role
+            var roles = await _userManager.GetRolesAsync(user);
+            var role = roles.FirstOrDefault();
 
             var token = GenerateJwtToken(user, role!);
+            var refreshToken = GenerateRefreshToken();
+            await StoreRefreshToken(user.Id, refreshToken);
 
-            // Update the response based on the user's role
             return new AuthResponseDto
             {
                 IsSuccess = true,
                 Token = token,
+                RefreshToken = refreshToken,
                 Role = role,
-                UserId = role == "User" ? user.Id : (int?)null, 
+                UserId = role == "User" ? user.Id : (int?)null,
                 CreatorId = role == "Creator" ? user.Id : (int?)null,
                 AdminId = role == "Admin" ? user.Id : (int?)null,
                 Name = user.Name
             };
         }
 
+        public async Task<AuthResponseDto> RefreshTokenAsync(string refreshToken)
+        {
+            var storedToken = await _dbContext.RefreshTokens.SingleOrDefaultAsync(rt => rt.Token == refreshToken);
+
+            if (storedToken == null || storedToken.IsRevoked || storedToken.ExpiryDate < DateTime.UtcNow)
+            {
+                return new AuthResponseDto { IsSuccess = false, Errors = new[] { "Invalid or expired refresh token" } };
+            }
+
+            var user = await _userManager.FindByIdAsync(storedToken.UserId.ToString());
+            if (user == null)
+            {
+                return new AuthResponseDto { IsSuccess = false, Errors = new[] { "User not found" } };
+            }
+
+            var roles = await _userManager.GetRolesAsync(user);
+            var role = roles.FirstOrDefault();
+
+            var newJwtToken = GenerateJwtToken(user, role!);
+            var newRefreshToken = GenerateRefreshToken();
+
+            storedToken.Token = newRefreshToken;
+            storedToken.ExpiryDate = DateTime.UtcNow.AddDays(Convert.ToDouble(_configuration["Jwt:RefreshTokenDurationInDays"]));
+            storedToken.CreatedDate = DateTime.UtcNow;
+            storedToken.IsRevoked = false;
+
+            await _dbContext.SaveChangesAsync();
+
+            return new AuthResponseDto
+            {
+                IsSuccess = true,
+                Token = newJwtToken,
+                RefreshToken = newRefreshToken
+            };
+        }
+
         private string GenerateJwtToken(User user, string role)
         {
-            var userRoles = _userManager.GetRolesAsync(user).Result;
-
             var claims = new List<Claim>
             {
                 new(JwtRegisteredClaimNames.Sub, user.Email!),
@@ -122,7 +171,6 @@ namespace Skillsphere.Services
                 new(ClaimTypes.Name, user.Name!)
             };
 
-            // Add appropriate claims based on the role
             if (role == "User")
             {
                 claims.Add(new Claim("UserId", user.Id.ToString()));
@@ -136,7 +184,7 @@ namespace Skillsphere.Services
                 claims.Add(new Claim("AdminId", user.Id.ToString()));
             }
 
-            claims.AddRange(userRoles.Select(r => new Claim(ClaimTypes.Role, r)));
+            claims.Add(new Claim(ClaimTypes.Role, role));
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -149,6 +197,44 @@ namespace Skillsphere.Services
                 signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        private string GenerateRefreshToken()
+        {
+            var randomBytes = new byte[32];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(randomBytes);
+                return Convert.ToBase64String(randomBytes);
+            }
+        }
+
+        private async Task StoreRefreshToken(int userId, string refreshToken)
+        {
+            var existingToken = await _dbContext.RefreshTokens.SingleOrDefaultAsync(rt => rt.UserId == userId);
+
+            if (existingToken != null)
+            {
+                existingToken.Token = refreshToken;
+                existingToken.ExpiryDate = DateTime.UtcNow.AddDays(Convert.ToDouble(_configuration["Jwt:RefreshTokenDurationInDays"]));
+                existingToken.CreatedDate = DateTime.UtcNow;
+                existingToken.IsRevoked = false;
+            }
+            else
+            {
+                var newToken = new RefreshToken
+                {
+                    Token = refreshToken,
+                    UserId = userId,
+                    CreatedDate = DateTime.UtcNow,
+                    ExpiryDate = DateTime.UtcNow.AddDays(Convert.ToDouble(_configuration["Jwt:RefreshTokenDurationInDays"])),
+                    IsRevoked = false
+                };
+
+                await _dbContext.RefreshTokens.AddAsync(newToken);
+            }
+
+            await _dbContext.SaveChangesAsync();
         }
     }
 }
