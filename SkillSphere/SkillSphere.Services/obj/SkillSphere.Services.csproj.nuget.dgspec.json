@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\A Final Project\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj": {}
+    "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj": {}
   },
   "projects": {
-    "C:\\A Final Project\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj": {
+    "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\A Final Project\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj",
+        "projectUniqueName": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj",
         "projectName": "SkillSphere.Core",
-        "projectPath": "C:\\A Final Project\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj",
+        "projectPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj",
         "packagesPath": "C:\\Users\\shrey\\.nuget\\packages\\",
-        "outputPath": "C:\\A Final Project\\SkillSphere\\SkillSphere.core\\obj\\",
+        "outputPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\shrey\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -50,6 +50,10 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.7, )"
@@ -79,14 +83,14 @@
         }
       }
     },
-    "C:\\A Final Project\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj": {
+    "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\A Final Project\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj",
-        "projectName": "SkillSphere.Services",
-        "projectPath": "C:\\A Final Project\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj",
+        "projectUniqueName": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj",
+        "projectName": "SkillSphere.Infrastructure",
+        "projectPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\shrey\\.nuget\\packages\\",
-        "outputPath": "C:\\A Final Project\\SkillSphere\\SkillSphere.Services\\obj\\",
+        "outputPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\shrey\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -104,8 +108,90 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\A Final Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj": {
-                "projectPath": "C:\\A Final Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj"
+              "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj": {
+                "projectPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj",
+        "projectName": "SkillSphere.Services",
+        "projectPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj",
+        "packagesPath": "C:\\Users\\shrey\\.nuget\\packages\\",
+        "outputPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\shrey\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj": {
+                "projectPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj"
+              },
+              "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj": {
+                "projectPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj"
               }
             }
           }
@@ -132,6 +218,10 @@
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
               "version": "[8.0.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",

@@ -32,4 +32,8 @@
 		<ProjectReference Include="..\SkillSphere.Services\SkillSphere.Services.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="wwwroot\" />
+	</ItemGroup>
+
 </Project>

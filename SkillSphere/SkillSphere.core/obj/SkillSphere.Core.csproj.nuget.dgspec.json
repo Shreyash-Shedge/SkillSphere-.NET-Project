@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\A Final Project\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj": {}
+    "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj": {}
   },
   "projects": {
-    "C:\\A Final Project\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj": {
+    "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\A Final Project\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj",
+        "projectUniqueName": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj",
         "projectName": "SkillSphere.Core",
-        "projectPath": "C:\\A Final Project\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj",
+        "projectPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj",
         "packagesPath": "C:\\Users\\shrey\\.nuget\\packages\\",
-        "outputPath": "C:\\A Final Project\\SkillSphere\\SkillSphere.core\\obj\\",
+        "outputPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\shrey\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -49,6 +49,10 @@
             "AutoMapper": {
               "target": "Package",
               "version": "[13.0.1, )"
+            },
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SkillSphere.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4c79ed9795de256efa208512da753daa450f6ff4")]
 [assembly: System.Reflection.AssemblyProductAttribute("SkillSphere.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SkillSphere.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
