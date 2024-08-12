@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere\\SkillSphere.API.csproj": {}
+    "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere\\SkillSphere.API.csproj": {}
   },
   "projects": {
-    "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj": {
+    "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj",
+        "projectUniqueName": "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj",
         "projectName": "SkillSphere.Core",
-        "projectPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj",
-        "packagesPath": "C:\\Users\\shrey\\.nuget\\packages\\",
-        "outputPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.core\\obj\\",
+        "projectPath": "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.core\\SkillSphere.Core.csproj",
+        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\shrey\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -83,17 +83,17 @@
         }
       }
     },
-    "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj": {
+    "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj",
         "projectName": "SkillSphere.Infrastructure",
-        "projectPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\shrey\\.nuget\\packages\\",
-        "outputPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\shrey\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -108,8 +108,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj": {
-                "projectPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj"
+              "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj": {
+                "projectPath": "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj"
               }
             }
           }
@@ -162,17 +162,17 @@
         }
       }
     },
-    "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\Skillsphere.Seed\\Skillsphere.Seed.csproj": {
+    "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\Skillsphere.Seed\\Skillsphere.Seed.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\Skillsphere.Seed\\Skillsphere.Seed.csproj",
+        "projectUniqueName": "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\Skillsphere.Seed\\Skillsphere.Seed.csproj",
         "projectName": "Skillsphere.Seed",
-        "projectPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\Skillsphere.Seed\\Skillsphere.Seed.csproj",
-        "packagesPath": "C:\\Users\\shrey\\.nuget\\packages\\",
-        "outputPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\Skillsphere.Seed\\obj\\",
+        "projectPath": "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\Skillsphere.Seed\\Skillsphere.Seed.csproj",
+        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\Skillsphere.Seed\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\shrey\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -187,11 +187,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj": {
-                "projectPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj"
+              "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj": {
+                "projectPath": "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj"
               },
-              "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj": {
-                "projectPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj"
+              "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj"
               }
             }
           }
@@ -236,17 +236,17 @@
         }
       }
     },
-    "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj": {
+    "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj",
+        "projectUniqueName": "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj",
         "projectName": "SkillSphere.Services",
-        "projectPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj",
-        "packagesPath": "C:\\Users\\shrey\\.nuget\\packages\\",
-        "outputPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Services\\obj\\",
+        "projectPath": "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj",
+        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\shrey\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -261,11 +261,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj": {
-                "projectPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj"
+              "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj": {
+                "projectPath": "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj"
               },
-              "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj": {
-                "projectPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj"
+              "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj"
               }
             }
           }
@@ -322,17 +322,17 @@
         }
       }
     },
-    "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere\\SkillSphere.API.csproj": {
+    "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere\\SkillSphere.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere\\SkillSphere.API.csproj",
+        "projectUniqueName": "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere\\SkillSphere.API.csproj",
         "projectName": "SkillSphere.API",
-        "projectPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere\\SkillSphere.API.csproj",
-        "packagesPath": "C:\\Users\\shrey\\.nuget\\packages\\",
-        "outputPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere\\obj\\",
+        "projectPath": "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere\\SkillSphere.API.csproj",
+        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\shrey\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -347,17 +347,17 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj": {
-                "projectPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj"
+              "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj": {
+                "projectPath": "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Core\\SkillSphere.Core.csproj"
               },
-              "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj": {
-                "projectPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj"
+              "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Infrastructure\\SkillSphere.Infrastructure.csproj"
               },
-              "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\Skillsphere.Seed\\Skillsphere.Seed.csproj": {
-                "projectPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\Skillsphere.Seed\\Skillsphere.Seed.csproj"
+              "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\Skillsphere.Seed\\Skillsphere.Seed.csproj": {
+                "projectPath": "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\Skillsphere.Seed\\Skillsphere.Seed.csproj"
               },
-              "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj": {
-                "projectPath": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj"
+              "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj": {
+                "projectPath": "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere.Services\\SkillSphere.Services.csproj"
               }
             }
           }

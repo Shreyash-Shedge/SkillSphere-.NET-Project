@@ -22,6 +22,51 @@ namespace SkillSphere.API.Controllers
             _courseService = courseService;
         }
 
+        [HttpGet("user/all-courses")]
+        [Authorize(Roles = "User")]
+        public async Task<IActionResult> GetAllCourses()
+        {
+            var courses = await _courseService.GetAllCoursesAsync();
+
+            // Optionally, you can transform the courses into a DTO or another structure
+            var courseDtos = courses.Select(course => new
+            {
+                course.Id,
+                course.Title,
+                course.Description,
+                course.Price,
+                IsPurchased = false // Set default as false; this can be overridden later if needed
+            }).ToList();
+
+            return Ok(courseDtos);
+        }
+
+        [HttpGet("user/all-courses/{courseId}")]
+        [Authorize(Roles = "User")]
+        public async Task<IActionResult> GetCourseById(int courseId)
+        {
+            // Retrieve the course by its ID using your course service
+            var course = await _courseService.GetCourseByIdAsync(courseId);
+
+            if (course == null)
+            {
+                return NotFound(new { Message = "Course not found." });
+            }
+
+            // You can optionally map the course to a DTO if needed
+            var courseDto = new
+            {
+                course.Id,
+                course.Title,
+                course.Description,
+                course.Price,
+                IsPurchased = false // Set default as false; modify this based on user's purchase history if needed
+            };
+
+            return Ok(courseDto);
+        }
+
+
         [HttpGet("user/courses")]
         [Authorize(Roles = "User")]
         public async Task<IActionResult> GetAllCoursesForUser()
@@ -77,6 +122,8 @@ namespace SkillSphere.API.Controllers
 
             return Ok(courseDtos);
         }
+
+
 
         [HttpGet("creator/courses/{courseId}")]
         [Authorize(Roles = "Creator")]

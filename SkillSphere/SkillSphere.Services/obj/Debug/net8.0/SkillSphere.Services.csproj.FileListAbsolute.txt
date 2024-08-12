@@ -48,3 +48,21 @@ C:\A Final Project\SkillSphere-Project\SkillSphere\SkillSphere.Services\obj\Debu
 C:\A Final Project\SkillSphere-Project\SkillSphere\SkillSphere.Services\obj\Debug\net8.0\ref\SkillSphere.Services.dll
 C:\A Final Project\SkillSphere-Project\SkillSphere\SkillSphere.Services\bin\Debug\net8.0\SkillSphere.Infrastructure.dll
 C:\A Final Project\SkillSphere-Project\SkillSphere\SkillSphere.Services\bin\Debug\net8.0\SkillSphere.Infrastructure.pdb
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\SkillSphere-.NET-Project\SkillSphere-Project\SkillSphere\SkillSphere.Services\bin\Debug\net8.0\SkillSphere.Services.deps.json
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\SkillSphere-.NET-Project\SkillSphere-Project\SkillSphere\SkillSphere.Services\bin\Debug\net8.0\SkillSphere.Services.dll
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\SkillSphere-.NET-Project\SkillSphere-Project\SkillSphere\SkillSphere.Services\bin\Debug\net8.0\SkillSphere.Services.pdb
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\SkillSphere-.NET-Project\SkillSphere-Project\SkillSphere\SkillSphere.Services\bin\Debug\net8.0\SkillSphere.Core.dll
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\SkillSphere-.NET-Project\SkillSphere-Project\SkillSphere\SkillSphere.Services\bin\Debug\net8.0\SkillSphere.Infrastructure.dll
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\SkillSphere-.NET-Project\SkillSphere-Project\SkillSphere\SkillSphere.Services\bin\Debug\net8.0\SkillSphere.Core.pdb
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\SkillSphere-.NET-Project\SkillSphere-Project\SkillSphere\SkillSphere.Services\bin\Debug\net8.0\SkillSphere.Infrastructure.pdb
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\SkillSphere-.NET-Project\SkillSphere-Project\SkillSphere\SkillSphere.Services\obj\Debug\net8.0\SkillSphere.Services.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\SkillSphere-.NET-Project\SkillSphere-Project\SkillSphere\SkillSphere.Services\obj\Debug\net8.0\SkillSphere.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\SkillSphere-.NET-Project\SkillSphere-Project\SkillSphere\SkillSphere.Services\obj\Debug\net8.0\SkillSphere.Services.AssemblyInfoInputs.cache
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\SkillSphere-.NET-Project\SkillSphere-Project\SkillSphere\SkillSphere.Services\obj\Debug\net8.0\SkillSphere.Services.AssemblyInfo.cs
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\SkillSphere-.NET-Project\SkillSphere-Project\SkillSphere\SkillSphere.Services\obj\Debug\net8.0\SkillSphere.Services.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\SkillSphere-.NET-Project\SkillSphere-Project\SkillSphere\SkillSphere.Services\obj\Debug\net8.0\SkillSphere.Services.sourcelink.json
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\SkillSphere-.NET-Project\SkillSphere-Project\SkillSphere\SkillSphere.Services\obj\Debug\net8.0\SkillSph.E81D5641.Up2Date
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\SkillSphere-.NET-Project\SkillSphere-Project\SkillSphere\SkillSphere.Services\obj\Debug\net8.0\SkillSphere.Services.dll
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\SkillSphere-.NET-Project\SkillSphere-Project\SkillSphere\SkillSphere.Services\obj\Debug\net8.0\refint\SkillSphere.Services.dll
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\SkillSphere-.NET-Project\SkillSphere-Project\SkillSphere\SkillSphere.Services\obj\Debug\net8.0\SkillSphere.Services.pdb
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\SkillSphere-.NET-Project\SkillSphere-Project\SkillSphere\SkillSphere.Services\obj\Debug\net8.0\ref\SkillSphere.Services.dll
