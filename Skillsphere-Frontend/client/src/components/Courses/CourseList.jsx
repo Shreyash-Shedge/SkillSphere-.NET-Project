@@ -44,6 +44,7 @@ const CourseList = () => {
         Create Course
       </button>
       <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        
         {courses.map((course) => (
           <div key={course.id} className="bg-white p-4 rounded shadow-md border border-gray-300">
             <h2 className="text-xl font-bold mb-2 text-gray-900">{course.title}</h2>

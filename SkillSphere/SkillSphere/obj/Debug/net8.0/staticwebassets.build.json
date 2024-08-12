@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "z/Ce6sFi7lgMSJ9C2aPWoRCqmztZFgQwU1flw7Y+pfY=",
+  "Hash": "qtUoLeytTk2nuOHt/1YV/3pHF/ZpvVrn35a5GUztKQo=",
   "Source": "SkillSphere.API",
   "BasePath": "_content/SkillSphere.API",
   "Mode": "Default",
@@ -10,30 +10,10 @@
     {
       "Name": "SkillSphere.API\\wwwroot",
       "Source": "SkillSphere.API",
-      "ContentRoot": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\LENOVO\\Desktop\\CCAT\\SkillSphere\\SkillSphere-.NET-Project\\SkillSphere-Project\\SkillSphere\\SkillSphere\\wwwroot\\",
       "BasePath": "_content/SkillSphere.API",
       "Pattern": "**"
     }
   ],
-  "Assets": [
-    {
-      "Identity": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere\\wwwroot\\uploads\\Zoom Meeting 2024-03-21 18-50-18.mp4",
-      "SourceId": "SkillSphere.API",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\A Final Project\\SkillSphere-Project\\SkillSphere\\SkillSphere\\wwwroot\\",
-      "BasePath": "_content/SkillSphere.API",
-      "RelativePath": "uploads/Zoom Meeting 2024-03-21 18-50-18.mp4",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\Zoom Meeting 2024-03-21 18-50-18.mp4"
-    }
-  ]
+  "Assets": []
 }

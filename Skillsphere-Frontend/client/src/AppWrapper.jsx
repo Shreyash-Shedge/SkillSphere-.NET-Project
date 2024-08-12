@@ -16,6 +16,9 @@ import EditCourse from "./components/Courses/EditCourse";
 import EditModules from "./components/Courses/EditModules";
 import CourseList from "./components/Courses/CourseList";
 import CreateCourseForm from "./components/Courses/CreateCourseForm";
+import AllOfferings from "./components/User/AllOfferings";
+import CourseDetail from "./components/User/CourseDetail";
+import Checkout from "./components/User/Checkout";
 
 const appRouter = createBrowserRouter([
   {
@@ -38,6 +41,20 @@ const appRouter = createBrowserRouter([
       {
         path: "user-dashboard",
         element: <UserDashboard />,
+        children: [
+          {
+            path: "all-courses",
+            element: <AllOfferings />,  
+          },
+          {
+            path: "course-detail",
+            element: <CourseDetail />,
+          },
+          {
+            path: "course-detail/checkout",
+            element: <Checkout />,
+          },
+        ],
       },
       {
         path: "creator-dashboard",

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SkillSphere.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4c79ed9795de256efa208512da753daa450f6ff4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c0a30e2be74ab6ce87ac11354c56b79139a78ae0")]
 [assembly: System.Reflection.AssemblyProductAttribute("SkillSphere.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SkillSphere.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

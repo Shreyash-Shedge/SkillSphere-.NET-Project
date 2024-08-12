@@ -87,6 +87,7 @@ namespace SkillSphere
             builder.Services.AddScoped<IPurchaseRepository, PurchaseRepository>();
             builder.Services.AddScoped<CourseService>();
             builder.Services.AddScoped<PurchaseService>();
+            builder.Services.AddScoped<ICheckoutService, CheckoutService>();
 
             // Register RazorpayPaymentService and ensure HttpClient is available for dependency injection
             builder.Services.AddScoped<IPaymentService, RazorpayPaymentService>();
@@ -132,10 +133,10 @@ namespace SkillSphere
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy", builder =>
-                    builder.WithOrigins("http://localhost:3000") // Add specific origin
+                    builder.AllowAnyOrigin() // Add specific origin
                            .AllowAnyMethod()
                            .AllowAnyHeader()
-                           .AllowCredentials());
+                           );
             });
 
             // 9. Add Authorization policies

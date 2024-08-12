@@ -1,17 +1,24 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Outlet } from 'react-router-dom';  // Import Outlet for nested routing
+import UserSidebar from './UserSidebar';
+// import Navbar from '../Navbar/Navbar';
 
 const UserDashboard = () => {
   const { name, role } = useSelector((state) => state.auth);
 
-  if (role !== 'User') {
+  if (role !== 'User') { // Adjust role check for 'User' instead of 'Creator'
     return <div>Unauthorized</div>;
   }
 
   return (
-    <div>
-      <h1>User Dashboard</h1>
-      <p>Welcome, {name}</p>
+    <div className="h-screen flex flex-col">
+      <div className="flex flex-1">
+        <UserSidebar />
+        <main className="flex-1 p-6 bg-gray-100 overflow-y-auto">
+          <Outlet /> {/* This will render the nested route components */}
+        </main>
+      </div>
     </div>
   );
 };

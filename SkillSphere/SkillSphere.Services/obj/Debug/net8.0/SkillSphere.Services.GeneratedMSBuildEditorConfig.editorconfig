@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SkillSphere.Services
-build_property.ProjectDir = C:\A Final Project\SkillSphere-Project\SkillSphere\SkillSphere.Services\
+build_property.ProjectDir = C:\Users\LENOVO\Desktop\CCAT\SkillSphere\SkillSphere-.NET-Project\SkillSphere-Project\SkillSphere\SkillSphere.Services\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
