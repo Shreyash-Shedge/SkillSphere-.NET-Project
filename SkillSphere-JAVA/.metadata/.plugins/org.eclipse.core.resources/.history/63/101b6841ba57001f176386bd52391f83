@@ -1,0 +1,13 @@
+package com.example.skillsphere.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.skillsphere.repository.CourseRepository;
+
+@RestController
+public class CourseService {
+
+	@Autowired
+	private CourseRepository courseRepository;
+}	

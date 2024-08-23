@@ -1,0 +1,21 @@
+package com.example.skillsphere.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.skillsphere.model.Purchase;
+import com.example.skillsphere.repository.PurchaseRepository;
+
+@Service
+public class PurchaseService {
+
+	@Autowired
+	private PurchaseRepository purchaseRepository;
+	
+	public List<Purchase> findPurchasesByUserId(Long userId ) {
+		return purchaseRepository.findByUserId(userId);
+	}
+
+}

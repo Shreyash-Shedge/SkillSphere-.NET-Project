@@ -1,0 +1,34 @@
+package com.example.skillsphere.service;
+
+import java.net.URI;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import com.example.skillsphere.model.User;
+import com.example.skillsphere.repository.UserRepository;
+
+import jakarta.validation.Valid;
+
+@Service
+public class UserService {
+
+	@Autowired
+	private UserRepository userRepository;
+
+	public List<User> findAll() {
+		return userRepository.findAll();
+	}
+
+	public ResponseEntity<User> save(@Valid User user) {
+		User savedUser = userRepository.save(user);
+
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId())
+				.toUri();
+		return ResponseEntity.created(location).build();
+	}
+
+}

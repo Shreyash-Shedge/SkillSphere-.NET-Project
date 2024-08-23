@@ -1,0 +1,5 @@
+package com.example.skillsphere.jwt;
+
+public class CustomUserDetails {
+
+}

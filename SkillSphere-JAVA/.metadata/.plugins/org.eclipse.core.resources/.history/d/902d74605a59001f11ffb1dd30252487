@@ -1,0 +1,79 @@
+package com.example.skillsphere.jwtconfig;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.UserDetailsManager;
+import org.springframework.stereotype.Component;
+
+@Component
+public class CustomAuthenticationProvider implements AuthenticationProvider {
+
+    private static final Logger logger = LoggerFactory.getLogger(CustomAuthenticationProvider.class);
+
+    @Autowired
+    @Qualifier("userDetailsManager")
+    private UserDetailsManager userDetailsManager;
+
+    @Autowired
+    @Qualifier("creatorDetailsManager")
+    private UserDetailsManager creatorDetailsManager;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Override
+    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+        String username = authentication.getName();
+        String password = authentication.getCredentials().toString();
+
+        logger.info("Attempting to authenticate user: {}", username);
+
+        UserDetails userDetails;
+
+        try {
+            // Check if the username exists in the users database
+            if (userDetailsManager.userExists(username)) {
+                logger.info("User found in user_details database.");
+                userDetails = userDetailsManager.loadUserByUsername(username);
+            } else if (creatorDetailsManager.userExists(username)) {
+                logger.info("User found in creator database.");
+                userDetails = creatorDetailsManager.loadUserByUsername(username);
+            } else {
+                logger.warn("User not found: {}", username);
+                throw new CustomAuthenticationException("User not found");
+            }
+
+            if (passwordEncoder.matches(password, userDetails.getPassword())) {
+                logger.info("Authentication successful for user: {}", username);
+                return new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
+            } else {
+                logger.warn("Invalid credentials for user: {}", username);
+                throw new CustomAuthenticationException("Invalid credentials");
+            }
+        } catch (AuthenticationException e) {
+            logger.error("Authentication failed for user: {}", username, e);
+            throw e;
+        }
+    }
+
+    @Override
+    public boolean supports(Class<?> authentication) {
+        return UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication);
+    }
+
+    public static class CustomAuthenticationException extends AuthenticationException {
+        private static final long serialVersionUID = 1L;
+
+        public CustomAuthenticationException(String msg) {
+            super(msg);
+        }
+    }
+}

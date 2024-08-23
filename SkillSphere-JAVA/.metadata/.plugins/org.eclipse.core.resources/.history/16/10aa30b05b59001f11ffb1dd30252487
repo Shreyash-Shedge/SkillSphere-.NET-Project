@@ -1,0 +1,104 @@
+package com.example.skillsphere.service;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
+import java.net.URI;
+import java.util.Collections;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
+import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.UserDetailsManager;
+import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import com.example.skillsphere.controller.UserController;
+import com.example.skillsphere.exception.UserNotFoundException;
+import com.example.skillsphere.model.User;
+import com.example.skillsphere.repository.UserRepository;
+
+import jakarta.validation.Valid;
+
+@Service
+public class UserService {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    @Qualifier("userDetailsManager")
+    private UserDetailsManager userDetailsManager;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    private User validateUser(long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("User with id : " + userId + " does not exist"));
+    }
+
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
+    public ResponseEntity<User> save(@Valid User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        
+        UserDetails userDetails = org.springframework.security.core.userdetails.User.builder()
+                .username(user.getEmail())
+                .password(user.getPassword())
+                .authorities(Collections.singletonList(new SimpleGrantedAuthority(user.getRole())))
+                .build();
+
+        userDetailsManager.createUser(userDetails);
+
+        User savedUser = userRepository.save(user);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId())
+                .toUri();
+        return ResponseEntity.created(location).build();
+    }
+
+    public EntityModel<User> findById(long id) {
+        User user = validateUser(id);
+        EntityModel<User> entityModel = EntityModel.of(user);
+        WebMvcLinkBuilder link = linkTo(methodOn(UserController.class).retrieveAllUsers());
+        entityModel.add(link.withRel("all-users"));
+
+        return entityModel;
+    }
+
+    public ResponseEntity<User> deleteUserById(long id) {
+        validateUser(id);
+        String username = userRepository.findById(id)
+                .map(User::getEmail)
+                .orElseThrow(() -> new UserNotFoundException("User not found"));
+
+        deleteAuthoritiesByUsername(username);
+        userRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    public User updateUser(long id, User user) {
+        User existingUser = validateUser(id);
+        existingUser.setName(user.getName());
+        existingUser.setEmail(user.getEmail());
+        existingUser.setPassword(passwordEncoder.encode(user.getPassword()));
+        return userRepository.save(existingUser);
+    }
+    
+    private void deleteAuthoritiesByUsername(String username) {
+        String sql = "DELETE FROM authorities WHERE username = ?";
+        jdbcTemplate.update(sql, username);
+    }
+}

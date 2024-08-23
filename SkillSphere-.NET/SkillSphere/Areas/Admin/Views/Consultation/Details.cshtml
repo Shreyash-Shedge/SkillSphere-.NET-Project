@@ -1,0 +1,66 @@
+﻿@model SkillSphere.Models.Consultation
+
+@{
+    ViewData["Title"] = "Consultation Details";
+}
+
+<h2>Consultation Details</h2>
+
+<div>
+    <h4>@Model.Title</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Description
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Description
+        </dd>
+        <dt class="col-sm-2">
+            Slots Per User
+        </dt>
+        
+        <dt class="col-sm-2">
+            Duration
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Duration
+        </dd>
+        <dt class="col-sm-2">
+            Call Platform
+        </dt>
+        <dd class="col-sm-10">
+            @Model.CallPlatform
+        </dd>
+        <dt class="col-sm-2">
+            External Link
+        </dt>
+        <dd class="col-sm-10">
+            @Model.ExternalLink
+        </dd>
+        <dt class="col-sm-2">
+            Price
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Price
+        </dd>
+        <dt class="col-sm-2">
+            Start Date
+        </dt>
+        <dd class="col-sm-10">
+            @Model.StartDate
+        </dd>
+        <dt class="col-sm-2">
+            End Date
+        </dt>
+       
+        <dt class="col-sm-2">
+            Start Time
+        </dt>
+       
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a> |
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

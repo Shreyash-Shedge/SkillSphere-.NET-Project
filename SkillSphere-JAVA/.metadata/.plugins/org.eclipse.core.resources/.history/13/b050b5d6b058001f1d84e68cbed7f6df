@@ -1,0 +1,52 @@
+package com.example.skillsphere.controller;
+
+import com.example.skillsphere.model.Payment;
+import com.example.skillsphere.model.PaymentResponse;
+import com.example.skillsphere.service.PaymentService;
+import com.paypal.orders.Order;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
+import java.io.IOException;
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/payments")
+public class PaymentController {
+
+    @Autowired
+    private PaymentService paymentService;
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<List<Payment>> getAllPaymentsByUserId(@PathVariable Long userId) {
+        return ResponseEntity.ok(paymentService.getAllPaymentsByUserId(userId));
+    }
+
+    @PostMapping("/create/{userId}/{courseId}")
+    public ResponseEntity<ResponseEntity<PaymentResponse>> createPayment(@PathVariable Long userId, @PathVariable Long courseId,
+                                                 @RequestParam BigDecimal amount) throws IOException {
+        return ResponseEntity.ok(paymentService.createPayment(userId, courseId, amount));
+    }
+
+    @GetMapping("/success")
+    public String paymentSuccess(@RequestParam("token") String orderId, @RequestParam("PayerID") String payerId) {
+        try {
+            // Capture the payment using the token (which is equivalent to orderId)
+            Order order = paypalService.capturePayment(orderId);
+            
+            // Handle successful payment capture, update your payment status in the database, etc.
+            return "Payment Success";
+        } catch (IOException e) {
+            return "Payment Failure: " + e.getMessage();
+        }
+    }
+
+    @DeleteMapping("/{userId}/{paymentId}")
+    public ResponseEntity<Void> refundPayment(@PathVariable Long userId, @PathVariable Long paymentId) {
+        paymentService.refundPayment(paymentId, userId);
+        return ResponseEntity.noContent().build();
+    }
+}

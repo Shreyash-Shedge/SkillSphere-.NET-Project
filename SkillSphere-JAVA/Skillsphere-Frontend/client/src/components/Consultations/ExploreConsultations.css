@@ -1,0 +1,28 @@
+.explore-consultations-container {
+  padding-top: 20px; /* Adds space above the container */
+  padding-bottom: 20px; /* Adds space below the container */
+}
+
+.explore-consultations-container .card-spacing {
+  margin-bottom: 20px; /* Adds space below each card */
+}
+
+.explore-consultations-container .card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.explore-consultations-container .card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.explore-consultations-container .list-group {
+  flex-grow: 1;
+}
+
+.explore-consultations-container .card .btn {
+  margin-top: auto;
+}

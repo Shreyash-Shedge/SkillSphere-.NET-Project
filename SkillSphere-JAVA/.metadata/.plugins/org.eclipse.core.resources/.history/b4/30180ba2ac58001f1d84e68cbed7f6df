@@ -1,0 +1,5 @@
+package com.example.skillsphere.config;
+
+public class PaypalConfig {
+
+}

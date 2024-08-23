@@ -1,0 +1,42 @@
+package com.example.skillsphere.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    private final UserAuthenticationEntryPoint userAuthenticationEntryPoint;
+    private final UserAuthenticationProvider userAuthenticationProvider;
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+            .csrf(csrf -> csrf.disable())  // Disable CSRF protection as it's not needed for stateless REST APIs
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))  // Use stateless session management
+            .exceptionHandling(exception -> exception.authenticationEntryPoint(userAuthenticationEntryPoint))  // Handle unauthorized access attempts
+            .authorizeHttpRequests(authorize -> authorize.requestMatchers(HttpMethod.POST, "/users", "/creators", "/authenticate").permitAll()  // Allow unauthenticated POST requests to these endpoints
+            .anyRequest().authenticated())  // Require authentication for all other requests
+            .addFilterBefore(new JwtAuthFilter(userAuthenticationProvider), UsernamePasswordAuthenticationFilter.class);  // Add JWT authentication filter before username/password authentication
+
+        return http.build();
+    }
+    
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+}

@@ -1,0 +1,5 @@
+spring.application.name=skillsphere
+
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.initialization-mode=always
+spring.jpa.show-sql=true

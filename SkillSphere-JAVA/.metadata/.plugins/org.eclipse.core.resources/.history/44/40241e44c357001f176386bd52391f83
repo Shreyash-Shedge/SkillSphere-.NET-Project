@@ -1,0 +1,69 @@
+package com.example.skillsphere.service;
+
+import java.net.URI;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import com.example.skillsphere.exception.CourseNotFoundException;
+import com.example.skillsphere.model.Course;
+import com.example.skillsphere.model.Creator;
+import com.example.skillsphere.repository.CourseRepository;
+
+import jakarta.validation.Valid;
+
+@RestController
+public class CourseService {
+
+	@Autowired
+	private CreatorService creatorService;
+
+	@Autowired
+	private CourseRepository courseRepository;
+
+	private Course validateCourse(Long creatorId, Long courseId) {
+		Course course = courseRepository.findById(courseId)
+				.orElseThrow(() -> new CourseNotFoundException("courseId : " + courseId));
+
+		if (course.getCreator().getCreatorId() != creatorId) {
+			throw new CourseNotFoundException("CourseId : " + courseId + " does not belong to user id " + creatorId);
+		}
+		return course;
+	}
+
+	public List<Course> findCoursesForCreator(Long creatorId) {
+		Creator creator = creatorService.validateCreator(creatorId);
+		return creator.getCourses();
+	}
+
+	public ResponseEntity<Course> save(Long creatorId, @Valid Course course) {
+		Creator creator = creatorService.validateCreator(creatorId);
+		course.setCreator(creator);
+
+		Course savedCourse = courseRepository.save(course);
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(savedCourse.getCourseId()).toUri();
+		return ResponseEntity.created(location).build();
+	}
+
+	public Course findCourseByCourseId(Long creatorId, Long courseId) {
+		return validateCourse(creatorId, courseId);
+	}
+
+	public ResponseEntity<Course> deleteCourseByCourseId(Long creatorId, Long courseId) {
+		validateCourse(creatorId, courseId);
+		courseRepository.deleteById(courseId);
+		return ResponseEntity.noContent().build();
+	}
+
+	public Course updateCourseByCourseId(Long creatorId, Long courseId) {
+		Course course = validateCourse(creatorId, courseId);
+		course.setTitle(course.getTitle());
+		course.setDescription(course.getDescription());
+		return courseRepository.save(course);
+	}
+
+}

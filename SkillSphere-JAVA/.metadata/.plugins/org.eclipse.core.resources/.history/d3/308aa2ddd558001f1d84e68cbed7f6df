@@ -1,0 +1,38 @@
+package com.example.skillsphere.jwtconfig;
+
+import java.time.Instant;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.jwt.JwtClaimsSet;
+import org.springframework.security.oauth2.jwt.JwtEncoder;
+import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class JwtAuthenticationResource {
+
+	public static record JwtResponse(String token) {};
+	
+	public static record AuthenticationRequest(String username, String password) {}
+
+	@Autowired
+	private JwtEncoder jwtEncoder;
+
+	@PostMapping("/authenticate")
+	public JwtResponse authenticate(Authentication authentication) {
+		return new JwtResponse(createdToken(authentication));
+	}
+
+	private String createdToken(Authentication authentication) {
+		return jwtEncoder.encode(JwtEncoderParameters.from(JwtClaimsSet.builder().issuer("self").issuedAt(Instant.now())
+				.expiresAt(Instant.now().plusSeconds(60 * 15)).subject(authentication.getName())
+				.claim("scope", createdScope(authentication)).build())).getTokenValue();
+	}
+
+	private String createdScope(Authentication authentication) {
+		return authentication.getAuthorities().stream().map(a -> a.getAuthority()).collect(Collectors.joining(" "));
+	}
+}

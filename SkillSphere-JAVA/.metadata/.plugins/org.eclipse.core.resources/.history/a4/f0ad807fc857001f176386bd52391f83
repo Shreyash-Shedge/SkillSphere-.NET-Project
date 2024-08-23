@@ -1,0 +1,34 @@
+package com.example.skillsphere.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.skillsphere.exception.CourseNotFoundException;
+import com.example.skillsphere.model.Course;
+import com.example.skillsphere.model.Modules;
+import com.example.skillsphere.repository.ModulesRepository;
+
+public class ModuleService {
+	
+	@Autowired
+	private CourseService courseService;	
+	@Autowired
+	private ModulesRepository modulesRepository;
+	
+	private Modules validateModule(Long courseId, Long moduleId) {
+		Modules module = modulesRepository.findById(moduleId)
+				.orElseThrow(() -> new CourseNotFoundException("Module with moduleId : " + moduleId+" does not exist"));
+
+		if (module.getCourse().getCourseId() != courseId) {
+			throw new CourseNotFoundException("ModuleId : " + moduleId + " does not belong to Course id " + courseId);
+		}
+		return module;
+	}
+
+	public List<Modules> findAllModulesByCourseId(Long courseId) {
+		
+		return null;
+	}
+
+}

@@ -1,0 +1,42 @@
+package com.example.skillsphere.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import com.example.skillsphere.service.UserService;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    private final UserAuthenticationEntryPoint userAuthenticationEntryPoint;
+    private final UserAuthenticationProvider userAuthenticationProvider;
+    private final UserService userService;
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+            .csrf(csrf -> csrf.disable())  // Disable CSRF
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))  // Use stateless sessions
+            .exceptionHandling(exception -> exception.authenticationEntryPoint(userAuthenticationEntryPoint))  // Handle unauthorized access
+            .authorizeHttpRequests(authorize -> authorize
+                .requestMatchers(HttpMethod.POST, "/users", "/creators", "/authenticate").permitAll()
+                .requestMatchers("/h2-console/**").permitAll()  // Allow access to H2 console
+                .anyRequest().authenticated())  // Require authentication for all other requests
+            .addFilterBefore(new JwtAuthFilter(userAuthenticationProvider, userService), UsernamePasswordAuthenticationFilter.class)
+            .httpBasic(httpBasic -> httpBasic.disable())  // Disable HTTP Basic authentication
+            .formLogin(formLogin -> formLogin.disable())  // Disable form-based login
+            .headers(headers -> headers.frameOptions(frameOptions-> frameOptions.disable()));  // Disable X-Frame-Options to allow H2 console access
+
+        return http.build();
+    }
+}

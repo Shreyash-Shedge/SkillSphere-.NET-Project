@@ -1,0 +1,17 @@
+package com.example.skillsphere.annotations;
+
+import java.time.LocalDateTime;
+
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
+
+public class FutureOrTodayValidator implements ConstraintValidator<FutureOrToday, LocalDateTime>{
+
+	  @Override
+	    public boolean isValid(LocalDateTime value, ConstraintValidatorContext context) {
+	        if (value == null) {
+	            return true; // Consider null as valid, use @NotNull for null checks
+	        }
+	        return !value.toLocalDate().isBefore(LocalDateTime.now().toLocalDate());
+	    }
+}

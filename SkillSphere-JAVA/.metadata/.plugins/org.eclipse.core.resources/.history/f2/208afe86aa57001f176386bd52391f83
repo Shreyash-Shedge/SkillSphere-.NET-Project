@@ -1,0 +1,9 @@
+package com.example.skillsphere.exception;
+
+import java.time.LocalDateTime;
+
+public class ErrorDetails {
+	private LocalDateTime timestamp;
+	private String message;
+	private String description;
+}

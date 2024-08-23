@@ -1,0 +1,41 @@
+package com.example.skillsphere.service;
+
+import java.net.URI;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import com.example.skillsphere.model.Consultation;
+import com.example.skillsphere.model.Course;
+import com.example.skillsphere.model.Creator;
+import com.example.skillsphere.repository.ConsultationRepository;
+
+import jakarta.validation.Valid;
+
+@Service
+public class ConsultationService {
+
+	@Autowired
+	private ConsultationRepository consultationRepository;
+	@Autowired
+	private CreatorService creatorService;
+
+	public List<Consultation> findConsultationForCreator(Long creatorId) {
+		creatorService.validateCreator(creatorId);
+		return consultationRepository.findAll() ;
+	}
+
+	public ResponseEntity<Consultation> save(Long creatorId, @Valid Consultation consultation) {
+		Creator creator = creatorService.validateCreator(creatorId);
+		consultation.setCreator(creator);
+		
+		Consultation savedConsultation= consultationRepository.save(consultation);
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(savedConsultation.getCosultationId()).toUri();
+		return ResponseEntity.created(location).build();
+	}
+
+}

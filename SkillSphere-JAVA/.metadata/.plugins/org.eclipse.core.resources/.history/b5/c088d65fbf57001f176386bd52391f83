@@ -1,0 +1,44 @@
+package com.example.skillsphere.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.skillsphere.model.Course;
+import com.example.skillsphere.model.Creator;
+import com.example.skillsphere.service.CourseService;
+
+import jakarta.validation.Valid;
+
+@RestController
+@RequestMapping("/api")
+public class CourseController {
+
+	@Autowired
+	private CourseService courseService;
+	
+	@GetMapping("/{creatorId}/courses")
+	public List<Course> retrieveAllCourses(@PathVariable Creator creatorId){
+		return this.courseService.findAll();
+	}
+	
+	@PostMapping("/{creatorId}/courses")
+	public ResponseEntity<Course> createCourses(@PathVariable Long creatorId ,@Valid @RequestBody Course course){
+		return this.courseService.save(creatorId,course);
+	}
+	
+	@PostMapping("/{creatorId}/courses")
+	public Course retrieveCourseForCreator(@PathVariable Long creatorId){
+		return this.courseService.findById(creatorId);
+	}
+	
+	
+	
+}

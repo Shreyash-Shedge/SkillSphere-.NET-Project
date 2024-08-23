@@ -1,0 +1,33 @@
+spring.application.name=skillsphere
+
+# H2 Database Configuration (Commented Out)
+# spring.datasource.url=jdbc:h2:mem:testdb
+# spring.datasource.initialization-mode=always
+# spring.h2.console.enabled=true
+# spring.h2.console.path=/h2-console
+
+# MySQL Database Configuration
+spring.datasource.url=jdbc:mysql://localhost:3306/Skillspheredb?useSSL=false&serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=cdac
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+spring.jpa.show-sql=true
+
+#Debug
+logging.level.org.springframework.security=DEBUG
+logging.level.org.springframework.security.authentication=DEBUG
+logging.level.org.springframework.security.web.authentication=DEBUG
+
+spring.servlet.multipart.enabled=true
+# Maximum file size
+spring.servlet.multipart.max-file-size=1GB
+# Maximum request size
+spring.servlet.multipart.max-request-size=1GB
+
+# PayPal Configuration
+paypal.clientId=Afw80ni8NUoIJodAymAXHhD4QqXSqdwr89VoveBPyFoGvFC5fmEKYsGpPwE0LF3V_O9PbFxuJY_fPV_B
+paypal.clientSecret=EH_c5kCJv3lLjbcXarpVlPH8FLdczrICwuyg1XMhr9MjEnEr1bdly0vqE6VxEck4C6n_Q3lVECs6RY4F
+paypal.mode=sandbox
+paypal.returnUrl=http://localhost:8080/api/payments/success
+paypal.cancelUrl=http://localhost:8080/api/payments/cancel

@@ -1,0 +1,42 @@
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Utility\bin\Debug\net8.0\SkillSphere.Utility.deps.json
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Utility\bin\Debug\net8.0\SkillSphere.Utility.runtimeconfig.json
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Utility\bin\Debug\net8.0\SkillSphere.Utility.dll
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Utility\bin\Debug\net8.0\SkillSphere.Utility.pdb
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Utility\obj\Debug\net8.0\SkillSphere.Utility.csproj.AssemblyReference.cache
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Utility\obj\Debug\net8.0\SkillSphere.Utility.GeneratedMSBuildEditorConfig.editorconfig
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Utility\obj\Debug\net8.0\SkillSphere.Utility.AssemblyInfoInputs.cache
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Utility\obj\Debug\net8.0\SkillSphere.Utility.AssemblyInfo.cs
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Utility\obj\Debug\net8.0\SkillSphere.Utility.csproj.CoreCompileInputs.cache
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Utility\obj\Debug\net8.0\SkillSphere.Utility.dll
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Utility\obj\Debug\net8.0\refint\SkillSphere.Utility.dll
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Utility\obj\Debug\net8.0\SkillSphere.Utility.pdb
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Utility\obj\Debug\net8.0\SkillSphere.Utility.genruntimeconfig.cache
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Utility\obj\Debug\net8.0\ref\SkillSphere.Utility.dll
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Utility\bin\Debug\net8.0\SkillSphere.Utility.deps.json
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Utility\bin\Debug\net8.0\SkillSphere.Utility.runtimeconfig.json
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Utility\bin\Debug\net8.0\SkillSphere.Utility.dll
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Utility\bin\Debug\net8.0\SkillSphere.Utility.pdb
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Utility\obj\Debug\net8.0\SkillSphere.Utility.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Utility\obj\Debug\net8.0\SkillSphere.Utility.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Utility\obj\Debug\net8.0\SkillSphere.Utility.AssemblyInfoInputs.cache
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Utility\obj\Debug\net8.0\SkillSphere.Utility.AssemblyInfo.cs
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Utility\obj\Debug\net8.0\SkillSphere.Utility.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Utility\obj\Debug\net8.0\SkillSphere.Utility.dll
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Utility\obj\Debug\net8.0\refint\SkillSphere.Utility.dll
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Utility\obj\Debug\net8.0\SkillSphere.Utility.pdb
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Utility\obj\Debug\net8.0\SkillSphere.Utility.genruntimeconfig.cache
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Utility\obj\Debug\net8.0\ref\SkillSphere.Utility.dll
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Utility\bin\Debug\net8.0\SkillSphere.Utility.deps.json
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Utility\bin\Debug\net8.0\SkillSphere.Utility.runtimeconfig.json
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Utility\bin\Debug\net8.0\SkillSphere.Utility.dll
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Utility\bin\Debug\net8.0\SkillSphere.Utility.pdb
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Utility\obj\Debug\net8.0\SkillSphere.Utility.csproj.AssemblyReference.cache
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Utility\obj\Debug\net8.0\SkillSphere.Utility.GeneratedMSBuildEditorConfig.editorconfig
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Utility\obj\Debug\net8.0\SkillSphere.Utility.AssemblyInfoInputs.cache
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Utility\obj\Debug\net8.0\SkillSphere.Utility.AssemblyInfo.cs
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Utility\obj\Debug\net8.0\SkillSphere.Utility.csproj.CoreCompileInputs.cache
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Utility\obj\Debug\net8.0\SkillSphere.Utility.dll
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Utility\obj\Debug\net8.0\refint\SkillSphere.Utility.dll
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Utility\obj\Debug\net8.0\SkillSphere.Utility.pdb
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Utility\obj\Debug\net8.0\SkillSphere.Utility.genruntimeconfig.cache
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Utility\obj\Debug\net8.0\ref\SkillSphere.Utility.dll

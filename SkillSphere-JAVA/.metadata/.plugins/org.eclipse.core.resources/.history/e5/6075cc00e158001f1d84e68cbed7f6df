@@ -1,0 +1,75 @@
+package com.example.skillsphere.service;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
+import java.net.URI;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import com.example.skillsphere.controller.UserController;
+import com.example.skillsphere.exception.UserNotFoundException;
+import com.example.skillsphere.model.User;
+import com.example.skillsphere.repository.UserRepository;
+
+import jakarta.validation.Valid;
+
+@Service
+public class UserService {
+
+	@Autowired
+	private UserRepository userRepository;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
+	private User validateUser(long userId) {
+		return userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("User with id : " + userId+" does not exist"));
+	}
+
+	public List<User> findAll() {
+		return userRepository.findAll();
+	}
+
+	public ResponseEntity<User> save(@Valid User user) {
+		user.setRole("ROLE_USER");
+		 user.setPassword(passwordEncoder.encode(user.getPassword()));
+		User savedUser = userRepository.save(user);
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId())
+				.toUri();
+		return ResponseEntity.created(location).build();
+	}
+
+	public EntityModel<User> findById(long id) {
+		User user = validateUser(id);
+		EntityModel<User> entityModel = EntityModel.of(user);
+		WebMvcLinkBuilder link = linkTo(methodOn(UserController.class).retrieveAllUsers());
+		entityModel.add(link.withRel("all-users"));
+
+		return entityModel;
+	}
+
+	public ResponseEntity<User> deleteUserById(long id) {
+		validateUser(id);
+		userRepository.deleteById(id);
+		return ResponseEntity.noContent().build();
+	}
+
+	public User updateUser(long id, User user) {
+		User existingUser = validateUser(id);
+		existingUser.setName(user.getName());
+		existingUser.setEmail(user.getEmail());
+		existingUser.setPassword(user.getPassword());
+		return userRepository.save(existingUser);
+	}
+	
+	
+
+}

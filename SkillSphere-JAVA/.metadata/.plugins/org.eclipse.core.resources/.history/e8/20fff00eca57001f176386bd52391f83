@@ -1,0 +1,54 @@
+package com.example.skillsphere.service;
+
+import java.net.URI;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import com.example.skillsphere.exception.CourseNotFoundException;
+import com.example.skillsphere.model.Course;
+import com.example.skillsphere.model.Modules;
+import com.example.skillsphere.repository.ModulesRepository;
+
+import jakarta.validation.Valid;
+
+public class ModuleService {
+
+	@Autowired
+	private CourseService courseService;
+	@Autowired
+	private ModulesRepository modulesRepository;
+
+	private Modules validateModule(Long courseId, Long moduleId) {
+		Modules module = modulesRepository.findById(moduleId).orElseThrow(
+				() -> new CourseNotFoundException("Module with moduleId : " + moduleId + " does not exist"));
+
+		if (module.getCourse().getCourseId() != courseId) {
+			throw new CourseNotFoundException("ModuleId : " + moduleId + " does not belong to Course id " + courseId);
+		}
+		return module;
+	}
+
+	public List<Modules> findAllModulesByCourseId(Long courseId) {
+		Course course = courseService.validateCourseById(courseId);
+		return course.getModules();
+	}
+
+	public ResponseEntity<Modules> save(Long courseId, @Valid Modules module) {
+		Course course = courseService.validateCourseById(courseId);
+		module.setCourse(course);
+
+		Modules savedModule = modulesRepository.save(module);
+
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(savedModule.getModuleId()).toUri();
+		return ResponseEntity.created(location).build();
+	}
+
+	public Modules findModuleByIdForCourse(Course courseId, Modules moduleId) {
+		return validateModule(courseId,moduleId);
+	}
+
+}

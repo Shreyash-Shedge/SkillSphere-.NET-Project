@@ -1,0 +1,55 @@
+package com.example.skillsphere.jwtconfig;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.UserDetailsManager;
+import org.springframework.stereotype.Component;
+
+@Component
+public class CustomAuthenticationProvider implements AuthenticationProvider {
+
+    @Autowired
+    @Qualifier("userDetailsManager")
+    private UserDetailsManager userDetailsManager;
+
+    @Autowired
+    @Qualifier("creatorDetailsManager")
+    private UserDetailsManager creatorDetailsManager;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Override
+    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+        String username = authentication.getName();
+        String password = authentication.getCredentials().toString();
+
+        UserDetails userDetails;
+
+        // Check if the username exists in the users database
+        if (userDetailsManager.userExists(username)) {
+            userDetails = userDetailsManager.loadUserByUsername(username);
+        } else if (creatorDetailsManager.userExists(username)) {
+            userDetails = creatorDetailsManager.loadUserByUsername(username);
+        } else {
+            throw new AuthenticationException("User not found") {};
+        }
+
+        if (passwordEncoder.matches(password, userDetails.getPassword())) {
+            return new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
+        } else {
+            throw new AuthenticationException("Invalid credentials") {};
+        }
+    }
+
+    @Override
+    public boolean supports(Class<?> authentication) {
+        return UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication);
+    }
+}

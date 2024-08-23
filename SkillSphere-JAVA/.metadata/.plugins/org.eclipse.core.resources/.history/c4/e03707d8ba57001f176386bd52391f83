@@ -1,0 +1,33 @@
+package com.example.skillsphere.service;
+
+import java.net.URI;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import com.example.skillsphere.model.Course;
+import com.example.skillsphere.model.Creator;
+import com.example.skillsphere.repository.CourseRepository;
+
+import jakarta.validation.Valid;
+
+@RestController
+public class CourseService {
+
+	@Autowired
+	private CourseRepository courseRepository;
+
+	public List<Course> findAll() {
+		return courseRepository.findAll();
+	}
+
+	public ResponseEntity<Course> save(@Valid Course course) {
+		Course savedCourse = courseRepository.save(course);
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(savedCourse.getCourseId()).toUri();
+		return ResponseEntity.created(location).build();
+	}
+}

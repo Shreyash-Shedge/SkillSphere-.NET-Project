@@ -1,0 +1,140 @@
+﻿@model SkillSphere.Models.Consultation
+
+<script src="https://www.paypal.com/sdk/js?client-id=@(ViewBag.PaypalClientId)&currency=USD"></script>
+
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        align-items: center;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .left-side {
+        flex: 2;
+        padding-right: 20px;
+    }
+
+    .right-side {
+        flex: 1;
+        max-width: 420px;
+        padding-left: 20px;
+        border-left: 1px solid #ddd;
+    }
+
+    .icon {
+        margin-right: 8px;
+    }
+
+    .heading {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .description {
+        margin-bottom: 15px;
+    }
+
+    .info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .price {
+        font-size: 1.5rem;
+        color: green;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+</style>
+
+<div class="container">
+    <!-- Left Side -->
+    <div class="left-side">
+        <div class="heading">
+            <i class="fas fa-book icon"></i>
+            @Model.Title
+        </div>
+        <div class="description">
+            <i class="fas fa-align-left icon"></i>
+            @Model.Description
+        </div>
+        <div class="info">
+            <i class="fas fa-clock icon"></i>
+            Duration: @Model.Duration minutes
+        </div>
+        <div class="price">
+            <i class="fas fa-dollar-sign icon"></i>
+            Price: @Model.Price
+        </div>
+    </div>
+
+    <!-- Right Side -->
+    <div class="right-side">
+        <h2 class="text-center mb-5">Complete your order</h2>
+        <div class="form-group mb-3">
+            <label class="form-label">Total Amount ($)</label>
+            <input class="form-control" type="number" id="totalAmount" step='0.01' value="@Model.Price" />
+        </div>
+        <div id="notification-container"></div>
+        <div id="paypal-button-container"></div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        paypal.Buttons({
+            async createOrder() {
+                const amount = document.getElementById('totalAmount').value;
+                console.log("Amount to be paid:", amount);
+                const response = await fetch("@Url.Action("CreateOrder", "Checkout")", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ amount: amount })
+                });
+
+                const order = await response.json();
+                console.log("Order response:", order);
+                return order.id;
+            },
+
+            async onApprove(data) {
+                console.log("Order ID:", data.orderID);
+                const response = await fetch("@Url.Action("CompleteOrder", "Checkout")", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ orderID: data.orderID })
+                });
+
+                const details = await response.json();
+                console.log("Order completion response:", details);
+
+                if (details.status === "success") {
+                    window.location.href = "@Url.Action("PurchaseConsultation", "User", new { id = Model.Id })";
+                } else {
+                    alert("Payment failed. Please try again.");
+                }
+            },
+
+            onError(err) {
+                alert("An error occurred. Please try again.");
+            }
+        }).render('#paypal-button-container');
+    });
+</script>

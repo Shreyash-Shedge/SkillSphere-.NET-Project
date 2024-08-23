@@ -1,0 +1,18 @@
+﻿@model IEnumerable<SkillSphere.Models.Consultation>
+
+<h2>My Workshops</h2>
+<div class="row">
+    @foreach (var consultation in Model)
+    {
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">@consultation.Title</h5>
+                    <p class="card-text">@consultation.Description</p>
+                    <p class="card-text"><strong>Date & Time:</strong> @consultation.StartDate.ToString("f")</p>
+                    <a href="@consultation.ExternalLink" class="btn btn-primary">Join</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

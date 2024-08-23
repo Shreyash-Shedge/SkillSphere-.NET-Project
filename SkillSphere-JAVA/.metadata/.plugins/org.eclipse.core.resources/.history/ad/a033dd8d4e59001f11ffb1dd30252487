@@ -1,0 +1,25 @@
+package com.example.skillsphere.jwtconfig;
+
+import javax.sql.DataSource;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.security.provisioning.UserDetailsManager;
+
+@Configuration
+public class CreatorJdbcUserDetailsManagerConfig {
+
+	@Bean(name = "creatorDetailsManager")
+	public UserDetailsManager creatorDetailsManager(DataSource dataSource, JdbcTemplate jdbcTemplate) {
+		JdbcUserDetailsManager manager = new JdbcUserDetailsManager(dataSource);
+		manager.setJdbcTemplate(jdbcTemplate);
+		// Custom queries for Creator
+		manager.setUsersByUsernameQuery("SELECT email AS username, password, enabled FROM creator WHERE email = ?");
+		manager.setAuthoritiesByUsernameQuery(
+				"SELECT email AS username, role AS authority FROM creator WHERE email = ?");
+		return manager;
+	}
+
+}

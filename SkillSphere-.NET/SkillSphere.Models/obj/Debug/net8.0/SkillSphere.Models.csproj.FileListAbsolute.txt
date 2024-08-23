@@ -1,0 +1,42 @@
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Models\obj\Debug\net8.0\SkillSphere.Models.csproj.AssemblyReference.cache
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Models\obj\Debug\net8.0\SkillSphere.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Models\obj\Debug\net8.0\SkillSphere.Models.AssemblyInfoInputs.cache
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Models\obj\Debug\net8.0\SkillSphere.Models.AssemblyInfo.cs
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Models\obj\Debug\net8.0\SkillSphere.Models.csproj.CoreCompileInputs.cache
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Models\bin\Debug\net8.0\SkillSphere.Models.deps.json
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Models\bin\Debug\net8.0\SkillSphere.Models.runtimeconfig.json
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Models\bin\Debug\net8.0\SkillSphere.Models.dll
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Models\bin\Debug\net8.0\SkillSphere.Models.pdb
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Models\obj\Debug\net8.0\SkillSphere.Models.dll
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Models\obj\Debug\net8.0\refint\SkillSphere.Models.dll
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Models\obj\Debug\net8.0\SkillSphere.Models.pdb
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Models\obj\Debug\net8.0\SkillSphere.Models.genruntimeconfig.cache
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.Models\obj\Debug\net8.0\ref\SkillSphere.Models.dll
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Models\bin\Debug\net8.0\SkillSphere.Models.deps.json
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Models\bin\Debug\net8.0\SkillSphere.Models.runtimeconfig.json
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Models\bin\Debug\net8.0\SkillSphere.Models.dll
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Models\bin\Debug\net8.0\SkillSphere.Models.pdb
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Models\obj\Debug\net8.0\SkillSphere.Models.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Models\obj\Debug\net8.0\SkillSphere.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Models\obj\Debug\net8.0\SkillSphere.Models.AssemblyInfoInputs.cache
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Models\obj\Debug\net8.0\SkillSphere.Models.AssemblyInfo.cs
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Models\obj\Debug\net8.0\SkillSphere.Models.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Models\obj\Debug\net8.0\SkillSphere.Models.dll
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Models\obj\Debug\net8.0\refint\SkillSphere.Models.dll
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Models\obj\Debug\net8.0\SkillSphere.Models.pdb
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Models\obj\Debug\net8.0\SkillSphere.Models.genruntimeconfig.cache
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.Models\obj\Debug\net8.0\ref\SkillSphere.Models.dll
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Models\bin\Debug\net8.0\SkillSphere.Models.deps.json
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Models\bin\Debug\net8.0\SkillSphere.Models.runtimeconfig.json
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Models\bin\Debug\net8.0\SkillSphere.Models.dll
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Models\bin\Debug\net8.0\SkillSphere.Models.pdb
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Models\obj\Debug\net8.0\SkillSphere.Models.csproj.AssemblyReference.cache
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Models\obj\Debug\net8.0\SkillSphere.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Models\obj\Debug\net8.0\SkillSphere.Models.AssemblyInfoInputs.cache
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Models\obj\Debug\net8.0\SkillSphere.Models.AssemblyInfo.cs
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Models\obj\Debug\net8.0\SkillSphere.Models.csproj.CoreCompileInputs.cache
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Models\obj\Debug\net8.0\SkillSphere.Models.dll
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Models\obj\Debug\net8.0\refint\SkillSphere.Models.dll
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Models\obj\Debug\net8.0\SkillSphere.Models.pdb
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Models\obj\Debug\net8.0\SkillSphere.Models.genruntimeconfig.cache
+C:\A Final Project\SkillSphere-.NET\SkillSphere.Models\obj\Debug\net8.0\ref\SkillSphere.Models.dll

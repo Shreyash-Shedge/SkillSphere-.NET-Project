@@ -1,0 +1,20 @@
+package com.example.skillsphere.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.skillsphere.model.User;
+import com.example.skillsphere.service.UserService;
+
+@RestController
+public class UserController {
+
+	@Autowired
+	private UserService userService;
+	
+	public List<User> retrieveAllUsers(){
+		return userService.findAll();
+	}
+}

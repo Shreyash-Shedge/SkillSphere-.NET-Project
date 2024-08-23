@@ -1,0 +1,46 @@
+package com.example.skillsphere.jwt;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import com.example.skillsphere.model.Creator;
+import com.example.skillsphere.model.User;
+import com.example.skillsphere.repository.CreatorRepository;
+import com.example.skillsphere.repository.UserRepository;
+
+@Service
+public class CustomUserDetailsService implements UserDetailsService {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private CreatorRepository creatorRepository;
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(email);
+        if (user != null) {
+            return org.springframework.security.core.userdetails.User
+                    .withUsername(user.getEmail())
+                    .password(user.getPassword())
+                    .roles(user.getRole()) // Roles should be without "ROLE_" prefix
+                    .build();
+        }
+        
+        Creator creator = creatorRepository.findByEmail(email);
+        if (creator != null) {
+            return org.springframework.security.core.userdetails.User
+                    .withUsername(creator.getEmail())
+                    .password(creator.getPassword())
+                    .roles(creator.getRole()) // Roles should be without "ROLE_" prefix
+                    .build();
+        }
+        
+        throw new UsernameNotFoundException("User not found with email: " + email);
+    }
+}

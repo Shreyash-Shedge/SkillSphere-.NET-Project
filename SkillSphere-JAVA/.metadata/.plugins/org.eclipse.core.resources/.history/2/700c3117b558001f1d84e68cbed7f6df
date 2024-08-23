@@ -1,0 +1,39 @@
+package com.example.skillsphere.config;
+
+import com.paypal.core.PayPalEnvironment;
+import com.paypal.core.PayPalHttpClient;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class PayPalConfig {
+
+    @Value("${paypal.clientId}")
+    private String clientId;
+
+    @Value("${paypal.clientSecret}")
+    private String clientSecret;
+
+    @Value("${paypal.mode}")
+    private String mode;
+
+    @Value("${paypal.apiUrl}")
+    private String apiUrl;
+    
+    @Bean
+    public PayPalEnvironment payPalEnvironment() {
+        if ("sandbox".equalsIgnoreCase(mode)) {
+            return new PayPalEnvironment.Sandbox(clientId, clientSecret);
+        } else {
+            return new PayPalEnvironment.Live(clientId, clientSecret);
+        }
+    }
+
+    @Bean
+    public PayPalHttpClient payPalHttpClient(PayPalEnvironment environment) {
+        PayPalHttpClient client = new PayPalHttpClient(environment);
+        client.setBaseUri(apiUrl); // Set the custom API URL here
+        return client;
+    }
+}

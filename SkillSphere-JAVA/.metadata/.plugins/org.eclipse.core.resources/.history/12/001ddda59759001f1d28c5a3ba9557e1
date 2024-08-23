@@ -1,0 +1,46 @@
+package com.example.skillsphere.controller;
+
+import com.example.skillsphere.config.UserAuthenticationProvider;
+import com.example.skillsphere.model.User;
+import com.example.skillsphere.service.UserService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
+
+@RequiredArgsConstructor
+@RestController
+@RequestMapping("/authenticate")
+public class AuthController {
+
+    private final AuthenticationManager authenticationManager;
+    private final UserAuthenticationProvider userAuthenticationProvider;
+    private final UserService userService;
+
+    @PostMapping
+    public ResponseEntity<?> authenticate(@RequestBody Map<String, String> credentials) {
+        try {
+            String email = credentials.get("email");
+            String password = credentials.get("password");
+
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(email, password)
+            );
+
+            User user = (User) authentication.getPrincipal();
+            String token = userAuthenticationProvider.createToken(user.getId().toString());
+
+            return ResponseEntity.ok(Map.of(
+                    "token", token,
+                    "role", user.getRole()
+            ));
+        } catch (AuthenticationException e) {
+            return ResponseEntity.status(401).body("Invalid email or password");
+        }
+    }
+}

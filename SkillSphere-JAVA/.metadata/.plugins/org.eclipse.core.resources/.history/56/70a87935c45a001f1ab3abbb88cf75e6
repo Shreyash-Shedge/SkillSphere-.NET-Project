@@ -1,0 +1,116 @@
+package com.example.skillsphere.service;
+
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.example.skillsphere.exception.PaymentNotFoundException;
+import com.example.skillsphere.model.Course;
+import com.example.skillsphere.model.Payment;
+import com.example.skillsphere.model.PaymentResponse;
+import com.example.skillsphere.model.Purchase;
+import com.example.skillsphere.model.User;
+import com.example.skillsphere.repository.CourseRepository;
+import com.example.skillsphere.repository.PaymentRepository;
+import com.example.skillsphere.repository.PurchaseRepository;
+import com.example.skillsphere.repository.UserRepository;
+import com.paypal.orders.Order;
+
+@Service
+public class PaymentService {
+
+    @Autowired
+    private PaymentRepository paymentRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private CourseRepository courseRepository;
+
+    @Autowired
+    private PurchaseRepository purchaseRepository;
+
+    @Autowired
+    private PaypalService paypalService;
+
+    public List<Payment> getAllPaymentsByUserId(Long userId) {
+        return paymentRepository.findAll();
+    }
+
+    public Payment getPaymentById(Long paymentId) {
+        return paymentRepository.findById(paymentId)
+                .orElseThrow(() -> new PaymentNotFoundException("Payment with ID " + paymentId + " not found"));
+    }
+
+    public PaymentResponse createPayment(Long userId, Long courseId) throws IOException {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+        Course course = courseRepository.findById(courseId)
+                .orElseThrow(() -> new IllegalArgumentException("Course not found"));
+        BigDecimal amount = course.getPrice();
+
+        // Sanitize URLs
+        String cancelUrl = URLEncoder.encode("http://localhost:8080/api/payments/cancel", StandardCharsets.UTF_8.toString());
+        String successUrl = URLEncoder.encode("http://localhost:8080/api/payments/success", StandardCharsets.UTF_8.toString());
+
+        // Create PayPal payment with currency set to USD
+        Order paypalOrder = paypalService.createPayment(amount, course.getDescription(), cancelUrl, successUrl);
+
+        String approvalUrl = paypalService.getApprovalLink(paypalOrder);
+        String orderId = paypalOrder.id();
+
+        Payment payment = new Payment();
+        payment.setUser(user);
+        payment.setCourse(course);
+        payment.setAmount(amount);
+        payment.setStatus("CREATED");
+        payment.setOrderId(orderId);
+
+        payment.setCreatedAt(LocalDateTime.now());
+        payment.setUpdatedAt(LocalDateTime.now());
+
+        Payment savedPayment = paymentRepository.save(payment);
+
+        return new PaymentResponse(savedPayment, approvalUrl);
+    }
+    
+    
+    public void captureOrder(Payment payment, String orderId) throws IOException {
+        Order executedOrder = paypalService.capturePayment(orderId);
+
+        // Update the payment status
+        payment.setStatus(executedOrder.status());
+        payment.setUpdatedAt(LocalDateTime.now());  // Update the updatedAt timestamp
+        paymentRepository.save(payment);
+
+        // Check if the payment was successful before creating the Purchase record
+        if ("COMPLETED".equalsIgnoreCase(executedOrder.status())) {
+            // Create and save the Purchase record
+            Purchase purchase = new Purchase();
+            purchase.setUser(payment.getUser());
+            purchase.setCourse(payment.getCourse());
+            purchase.setAmount(payment.getAmount());
+            purchase.setPaymentStatus("COMPLETED");
+            purchase.setCreatedAt(LocalDateTime.now());
+            purchase.setUpdatedAt(LocalDateTime.now());
+
+            purchaseRepository.save(purchase);
+        }
+    }
+
+    public void refundPayment(Long paymentId, Long userId) {
+        Payment payment = paymentRepository.findById(paymentId)
+                .orElseThrow(() -> new PaymentNotFoundException("Payment not found"));
+
+        payment.setStatus("REFUNDED");
+        payment.setUpdatedAt(LocalDateTime.now());  // Update the updatedAt timestamp
+        payment.getUser().setCredits(payment.getUser().getCredits().add(payment.getAmount()));
+        paymentRepository.save(payment);
+    }
+}

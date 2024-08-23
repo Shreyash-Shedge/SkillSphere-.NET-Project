@@ -1,0 +1,5 @@
+package com.example.skillsphere.model;
+
+public class PaymentResponse {
+
+}

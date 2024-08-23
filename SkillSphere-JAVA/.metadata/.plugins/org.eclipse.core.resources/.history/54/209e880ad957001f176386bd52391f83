@@ -1,0 +1,78 @@
+package com.example.skillsphere.controller;
+
+import com.example.skillsphere.model.Video;
+import com.example.skillsphere.service.VideoService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.List;
+
+@RestController
+@RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:8080")
+public class VideoController {
+
+    @Autowired
+    private VideoService videoService;
+
+    @GetMapping("/{moduleId}/videos")
+    @Operation(summary = "Get all videos for a specific module")
+    public List<Video> retrieveAllVideosForModule(@PathVariable Long moduleId) {
+        return videoService.findAllVideosByModuleId(moduleId);
+    }
+
+    @PostMapping("/{moduleId}/videos")
+    @Operation(summary = "Upload a video for a specific module")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "201", description = "Video uploaded successfully"),
+        @ApiResponse(responseCode = "400", description = "Invalid input"),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
+    public ResponseEntity<Video> createVideoForModule(
+            @PathVariable Long moduleId,
+            @Parameter(description = "Video file to upload", required = true, 
+                       schema = @Schema(type = "string", format = "binary"))
+            @RequestParam("file") MultipartFile file,
+            @RequestParam("title") String title) throws IOException {
+        return videoService.save(moduleId, file, title);
+    }
+
+    @GetMapping("/{moduleId}/videos/{videoId}")
+    @Operation(summary = "Get a specific video for a specific module")
+    public Video retrieveVideoForModule(@PathVariable Long moduleId,
+                                        @PathVariable Long videoId) {
+        return videoService.findVideoByIdForModule(moduleId, videoId);
+    }
+
+    @DeleteMapping("/{moduleId}/videos/{videoId}")
+    @Operation(summary = "Delete a specific video for a specific module")
+    public ResponseEntity<Video> deleteVideoForModule(@PathVariable Long moduleId,
+                                                      @PathVariable Long videoId) {
+        return videoService.deleteVideoByIdForModule(moduleId, videoId);
+    }
+
+    @PutMapping("/{moduleId}/videos/{videoId}")
+    @Operation(summary = "Update a specific video for a specific module")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Video updated successfully"),
+        @ApiResponse(responseCode = "400", description = "Invalid input"),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
+    public Video updateVideoForModule(
+            @PathVariable Long moduleId,
+            @PathVariable Long videoId,
+            @Parameter(description = "New video file to upload", required = false, 
+                       schema = @Schema(type = "string", format = "binary"))
+            @RequestParam(value = "file", required = false) MultipartFile file,
+            @RequestParam(value = "title", required = false) String title) throws IOException {
+        return videoService.updateVideoByIdForModule(moduleId, videoId, file, title);
+    }
+}

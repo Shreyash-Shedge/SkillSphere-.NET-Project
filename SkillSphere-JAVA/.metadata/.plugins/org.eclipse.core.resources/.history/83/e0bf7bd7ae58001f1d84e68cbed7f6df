@@ -1,0 +1,96 @@
+package com.example.skillsphere.service;
+
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.example.skillsphere.exception.PaymentNotFoundException;
+import com.example.skillsphere.model.Course;
+import com.example.skillsphere.model.Payment;
+import com.example.skillsphere.model.PaymentResponse;
+import com.example.skillsphere.model.Purchase;
+import com.example.skillsphere.model.User;
+import com.example.skillsphere.repository.CourseRepository;
+import com.example.skillsphere.repository.PaymentRepository;
+import com.example.skillsphere.repository.PurchaseRepository;
+import com.example.skillsphere.repository.UserRepository;
+import com.paypal.orders.Order;
+
+@Service
+public class PaymentService {
+
+    @Autowired
+    private PaymentRepository paymentRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private CourseRepository courseRepository;
+
+    @Autowired
+    private PurchaseRepository purchaseRepository;
+
+    @Autowired
+    private PaypalService paypalService;
+
+    public List<Payment> getAllPaymentsByUserId(Long userId) {
+        return paymentRepository.findAll();
+    }
+
+    public Payment getPaymentById(Long paymentId) {
+        return paymentRepository.findById(paymentId)
+                .orElseThrow(() -> new PaymentNotFoundException("Payment with ID " + paymentId + " not found"));
+    }
+
+    public ResponseEntity<PaymentResponse> createPayment(Long userId, Long courseId, BigDecimal amount) throws IOException {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+        Course course = courseRepository.findById(courseId)
+                .orElseThrow(() -> new IllegalArgumentException("Course not found"));
+
+        Payment payment = new Payment();
+        payment.setUser(user);
+        payment.setCourse(course);
+        payment.setAmount(amount);
+        payment.setStatus("CREATED");
+
+        Payment savedPayment = paymentRepository.save(payment);
+
+        // Create PayPal payment
+        Order paypalOrder = paypalService.createPayment(amount, "USD", course.getDescription(),
+                "http://localhost:8080/api/payments/cancel",
+                "http://localhost:8080/api/payments/success");
+
+        String approvalUrl = paypalService.getApprovalLink(paypalOrder);
+
+        // Return payment with approval link
+        return ResponseEntity.ok(new PaymentResponse(savedPayment, approvalUrl));
+    }
+
+  
+    public void captureOrder(Payment payment, String orderId) throws IOException {
+        Order executedOrder = paypalService.capturePayment(orderId);
+        payment.setStatus(executedOrder.status());
+        paymentRepository.save(payment);
+
+        Purchase purchase = new Purchase();
+        purchase.setUser(payment.getUser());
+        purchase.setCourse(payment.getCourse());
+        purchase.setPaymentStatus("COMPLETED");
+        purchaseRepository.save(purchase);
+    }
+
+    public void refundPayment(Long paymentId, Long userId) {
+        Payment payment = paymentRepository.findById(paymentId)
+                .orElseThrow(() -> new PaymentNotFoundException("Payment not found"));
+
+        payment.setStatus("REFUNDED");
+        payment.getUser().setCredits(payment.getUser().getCredits().add(payment.getAmount()));
+        paymentRepository.save(payment);
+    }
+}

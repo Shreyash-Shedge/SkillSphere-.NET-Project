@@ -1,0 +1,57 @@
+package com.example.skillsphere.config;
+
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpHeaders;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import java.io.IOException;
+
+@RequiredArgsConstructor
+public class JwtAuthFilter extends OncePerRequestFilter {
+
+    private static final Logger log = LoggerFactory.getLogger(JwtAuthFilter.class);
+
+    private final UserAuthenticationProvider userAuthenticationProvider;
+    private final UserService userService;
+
+    @Override
+    protected void doFilterInternal(
+            HttpServletRequest httpServletRequest,
+            HttpServletResponse httpServletResponse,
+            FilterChain filterChain) throws ServletException, IOException {
+
+        String header = httpServletRequest.getHeader(HttpHeaders.AUTHORIZATION);
+
+        log.debug("Processing request to URI: {}", httpServletRequest.getRequestURI());
+
+        if (header != null) {
+            String[] authElements = header.split(" ");
+
+            log.debug("Authorization header present, processing token");
+
+            if (authElements.length == 2 && "Bearer".equals(authElements[0])) {
+                try {
+                    log.debug("Validating token: {}", authElements[1]);
+                    SecurityContextHolder.getContext().setAuthentication(
+                            userAuthenticationProvider.validateToken(authElements[1], userService));
+                    log.debug("Token validation successful");
+                } catch (RuntimeException e) {
+                    log.error("Token validation failed", e);
+                    SecurityContextHolder.clearContext();
+                    throw e;
+                }
+            }
+        }
+
+        // Proceed to the next filter in the chain
+        log.debug("Proceeding to the next filter in the chain");
+        filterChain.doFilter(httpServletRequest, httpServletResponse);
+    }
+}

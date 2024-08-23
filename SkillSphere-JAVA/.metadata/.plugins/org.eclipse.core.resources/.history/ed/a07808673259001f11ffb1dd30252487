@@ -1,0 +1,57 @@
+package com.example.skillsphere.jwtconfig;
+
+import java.time.Instant;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.oauth2.jwt.JwtClaimsSet;
+import org.springframework.security.oauth2.jwt.JwtEncoder;
+import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class JwtAuthenticationResource {
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private JwtEncoder jwtEncoder;
+
+    @PostMapping("/authenticate")
+    public JwtResponse authenticate(@RequestBody AuthenticationRequest request) throws AuthenticationException {
+        Authentication authentication = authenticationManager.authenticate(
+            new UsernamePasswordAuthenticationToken(request.email(), request.password())
+        );
+        return new JwtResponse(createToken(authentication));
+    }
+
+    private String createToken(Authentication authentication) {
+        Instant now = Instant.now();
+        JwtClaimsSet claims = JwtClaimsSet.builder()
+            .issuer("self")
+            .issuedAt(now)
+            .expiresAt(now.plusSeconds(3600))  // Token valid for 1 hour
+            .subject(authentication.getName())
+            .claim("scope", createScope(authentication))
+            .build();
+
+        return jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
+    }
+
+    private String createScope(Authentication authentication) {
+        return authentication.getAuthorities().stream()
+            .map(a -> a.getAuthority())
+            .collect(Collectors.joining(" "));
+    }
+
+    public static record JwtResponse(String token) {};
+
+    public static record AuthenticationRequest(String email, String password) {};
+}

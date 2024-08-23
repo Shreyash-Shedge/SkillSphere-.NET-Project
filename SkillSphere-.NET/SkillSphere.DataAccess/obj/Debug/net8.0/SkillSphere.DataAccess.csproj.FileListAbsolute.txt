@@ -1,0 +1,57 @@
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSphere.DataAccess.csproj.AssemblyReference.cache
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSphere.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSphere.DataAccess.AssemblyInfoInputs.cache
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSphere.DataAccess.AssemblyInfo.cs
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSphere.DataAccess.csproj.CoreCompileInputs.cache
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.DataAccess\bin\Debug\net8.0\SkillSphere.DataAccess.deps.json
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.DataAccess\bin\Debug\net8.0\SkillSphere.DataAccess.runtimeconfig.json
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.DataAccess\bin\Debug\net8.0\SkillSphere.DataAccess.dll
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.DataAccess\bin\Debug\net8.0\SkillSphere.DataAccess.pdb
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.DataAccess\bin\Debug\net8.0\SkillSphere.Models.dll
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.DataAccess\bin\Debug\net8.0\SkillSphere.Utility.dll
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.DataAccess\bin\Debug\net8.0\SkillSphere.Models.pdb
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.DataAccess\bin\Debug\net8.0\SkillSphere.Utility.pdb
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSph.9CF0B49A.Up2Date
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSphere.DataAccess.dll
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.DataAccess\obj\Debug\net8.0\refint\SkillSphere.DataAccess.dll
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSphere.DataAccess.pdb
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSphere.DataAccess.genruntimeconfig.cache
+C:\.NET\A skillsphere\SkillSphere\SkillSphere.DataAccess\obj\Debug\net8.0\ref\SkillSphere.DataAccess.dll
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.DataAccess\bin\Debug\net8.0\SkillSphere.DataAccess.deps.json
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.DataAccess\bin\Debug\net8.0\SkillSphere.DataAccess.runtimeconfig.json
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.DataAccess\bin\Debug\net8.0\SkillSphere.DataAccess.dll
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.DataAccess\bin\Debug\net8.0\SkillSphere.DataAccess.pdb
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.DataAccess\bin\Debug\net8.0\SkillSphere.Models.dll
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.DataAccess\bin\Debug\net8.0\SkillSphere.Utility.dll
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.DataAccess\bin\Debug\net8.0\SkillSphere.Models.pdb
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.DataAccess\bin\Debug\net8.0\SkillSphere.Utility.pdb
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSphere.DataAccess.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSphere.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSphere.DataAccess.AssemblyInfoInputs.cache
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSphere.DataAccess.AssemblyInfo.cs
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSphere.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSph.9CF0B49A.Up2Date
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSphere.DataAccess.dll
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.DataAccess\obj\Debug\net8.0\refint\SkillSphere.DataAccess.dll
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSphere.DataAccess.pdb
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSphere.DataAccess.genruntimeconfig.cache
+C:\Users\LENOVO\Desktop\CCAT\SkillSphere\MVC\SkillSphere\SkillSphere\SkillSphere.DataAccess\obj\Debug\net8.0\ref\SkillSphere.DataAccess.dll
+C:\A Final Project\SkillSphere-.NET\SkillSphere.DataAccess\bin\Debug\net8.0\SkillSphere.DataAccess.deps.json
+C:\A Final Project\SkillSphere-.NET\SkillSphere.DataAccess\bin\Debug\net8.0\SkillSphere.DataAccess.runtimeconfig.json
+C:\A Final Project\SkillSphere-.NET\SkillSphere.DataAccess\bin\Debug\net8.0\SkillSphere.DataAccess.dll
+C:\A Final Project\SkillSphere-.NET\SkillSphere.DataAccess\bin\Debug\net8.0\SkillSphere.DataAccess.pdb
+C:\A Final Project\SkillSphere-.NET\SkillSphere.DataAccess\bin\Debug\net8.0\SkillSphere.Models.dll
+C:\A Final Project\SkillSphere-.NET\SkillSphere.DataAccess\bin\Debug\net8.0\SkillSphere.Utility.dll
+C:\A Final Project\SkillSphere-.NET\SkillSphere.DataAccess\bin\Debug\net8.0\SkillSphere.Models.pdb
+C:\A Final Project\SkillSphere-.NET\SkillSphere.DataAccess\bin\Debug\net8.0\SkillSphere.Utility.pdb
+C:\A Final Project\SkillSphere-.NET\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSphere.DataAccess.csproj.AssemblyReference.cache
+C:\A Final Project\SkillSphere-.NET\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSphere.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\A Final Project\SkillSphere-.NET\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSphere.DataAccess.AssemblyInfoInputs.cache
+C:\A Final Project\SkillSphere-.NET\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSphere.DataAccess.AssemblyInfo.cs
+C:\A Final Project\SkillSphere-.NET\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSphere.DataAccess.csproj.CoreCompileInputs.cache
+C:\A Final Project\SkillSphere-.NET\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSph.9CF0B49A.Up2Date
+C:\A Final Project\SkillSphere-.NET\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSphere.DataAccess.dll
+C:\A Final Project\SkillSphere-.NET\SkillSphere.DataAccess\obj\Debug\net8.0\refint\SkillSphere.DataAccess.dll
+C:\A Final Project\SkillSphere-.NET\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSphere.DataAccess.pdb
+C:\A Final Project\SkillSphere-.NET\SkillSphere.DataAccess\obj\Debug\net8.0\SkillSphere.DataAccess.genruntimeconfig.cache
+C:\A Final Project\SkillSphere-.NET\SkillSphere.DataAccess\obj\Debug\net8.0\ref\SkillSphere.DataAccess.dll

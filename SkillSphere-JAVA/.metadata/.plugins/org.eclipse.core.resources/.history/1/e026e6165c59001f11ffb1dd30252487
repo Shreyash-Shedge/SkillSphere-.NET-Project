@@ -1,0 +1,56 @@
+package com.example.skillsphere.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.skillsphere.model.Creator;
+import com.example.skillsphere.service.CreatorService;
+
+import jakarta.validation.Valid;
+
+@RestController
+@RequestMapping("/api")
+public class CreatorController {
+
+	@Autowired
+	private CreatorService creatorService;
+
+	@GetMapping("/creators")
+	public List<Creator> retrieveAllCreators() {
+		return this.creatorService.findAll();
+	}
+
+	@PostMapping("/creators")
+	public ResponseEntity<Creator> createCreator(@Valid @RequestBody Creator creator) {
+		return this.creatorService.save(creator);
+	}
+
+	@GetMapping("/creators/{id}")
+
+	public EntityModel<Creator> findCreator(@PathVariable long id) {
+		return this.creatorService.findById(id);
+	}
+
+	@DeleteMapping("/creators/{id}")
+
+	public ResponseEntity<Creator> deleteCreator(@PathVariable long id) {
+		return this.creatorService.deleteCreatorById(id);
+	}
+
+	@PutMapping("/creators/{id}")
+
+	public Creator updateCreator(@PathVariable long id, @Valid @RequestBody Creator creator) {
+		return this.creatorService.updateCreator(id, creator);
+	}
+}

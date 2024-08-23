@@ -1,0 +1,29 @@
+spring.application.name=skillsphere
+
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.initialization-mode=always
+spring.jpa.show-sql=true
+
+#Debug
+logging.level.org.springframework.security=DEBUG
+logging.level.org.springframework.security.authentication=DEBUG
+logging.level.org.springframework.security.web.authentication=DEBUG
+
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+
+spring.servlet.multipart.enabled=true
+# Maximum file size
+spring.servlet.multipart.max-file-size=1GB
+# Maximum request size
+spring.servlet.multipart.max-request-size=1GB
+
+
+paypal.clientId=AdYH72rwomuxaJlElI2h703XXKHUl02T5kFEqaV22uFbLYcthGxRqC7AbXzHFkpTNMnPojvuSh02MZmr
+paypal.clientSecret=ENBFbw6_sYiMSCg6hk5wLr6XUyykfG11fQJD09ZxZN52IXCsNGBNjhAIx5xiXdJRvJxN_i8x_bFqz6e7
+paypal.mode=sandbox
+paypal.returnUrl=http://localhost:8080/api/payments/success
+paypal.cancelUrl=http://localhost:8080/api/payments/cancel
+
+
+

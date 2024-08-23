@@ -1,0 +1,66 @@
+package com.example.skillsphere.service;
+
+import com.paypal.http.HttpResponse;
+import com.paypal.orders.*;
+import com.paypal.core.PayPalHttpClient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class PaypalService {
+
+    @Autowired
+    private PayPalHttpClient payPalClient;
+
+    public Order createPayment(BigDecimal total, String description, String cancelUrl, String successUrl) throws IOException {
+        OrderRequest orderRequest = new OrderRequest();
+        orderRequest.checkoutPaymentIntent("CAPTURE");
+
+        ApplicationContext applicationContext = new ApplicationContext()
+                .brandName("SkillSphere")
+                .landingPage("BILLING")
+                .cancelUrl(cancelUrl)
+                .returnUrl(successUrl)
+                .userAction("CONTINUE");
+
+        orderRequest.applicationContext(applicationContext);
+
+        // Ensure currency is set to USD
+        AmountWithBreakdown amount = new AmountWithBreakdown().currencyCode("USD")
+                .value(total.toString());
+
+        List<PurchaseUnitRequest> purchaseUnits = new ArrayList<>();
+        purchaseUnits.add(new PurchaseUnitRequest().amountWithBreakdown(amount).description(description));
+
+        orderRequest.purchaseUnits(purchaseUnits);
+
+        OrdersCreateRequest request = new OrdersCreateRequest().requestBody(orderRequest);
+
+        HttpResponse<Order> response = payPalClient.execute(request);
+        return response.result();
+    }
+
+    public String getApprovalLink(Order order) {
+        for (LinkDescription link : order.links()) {
+            if (link.rel().equals("approve")) {
+                String approvalLink = link.href();
+                System.out.println("Approval Link: " + approvalLink); // Log the approval link
+                return approvalLink;
+            }
+        }
+        return null;
+    }
+
+    public Order capturePayment(String orderId) throws IOException {
+        OrdersCaptureRequest request = new OrdersCaptureRequest(orderId);
+        request.requestBody(new OrderRequest());
+
+        HttpResponse<Order> response = payPalClient.execute(request);
+        return response.result();
+    }
+}

@@ -1,0 +1,10 @@
+package com.example.skillsphere.config;
+
+public class JwtAuthFilter {
+
+	public JwtAuthFilter(UserAuthenticationProvider userAuthenticationProvider) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+}

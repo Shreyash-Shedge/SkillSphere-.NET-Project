@@ -1,0 +1,102 @@
+package com.example.skillsphere.service;
+
+import java.io.IOException;
+import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import com.example.skillsphere.exception.ModuleNotFoundException;
+import com.example.skillsphere.exception.VideoNotFoundException;
+import com.example.skillsphere.model.Modules;
+import com.example.skillsphere.model.Video;
+import com.example.skillsphere.repository.ModulesRepository;
+import com.example.skillsphere.repository.VideoRepository;
+
+@Service
+public class VideoService {
+
+	private final String uploadDir = "C:/videos/"; // Define your directory here
+
+    @Autowired
+    private ModulesRepository modulesRepository;
+
+    @Autowired
+    private VideoRepository videoRepository;
+
+    public List<Video> findAllVideosByModuleId(Long moduleId) {
+        Modules module = modulesRepository.findById(moduleId)
+            .orElseThrow(() -> new ModuleNotFoundException("Module with moduleId: " + moduleId + " does not exist"));
+
+        return module.getVideos();
+    }
+    
+    public ResponseEntity<Video> save(Long moduleId, String title, MultipartFile file) throws IOException {
+        Modules module = modulesRepository.findById(moduleId)
+            .orElseThrow(() -> new ModuleNotFoundException("Module with moduleId: " + moduleId + " does not exist"));
+
+        // Save the file
+        String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+        String directory = uploadDir + "module_" + moduleId + "/";
+        Path filePath = Paths.get(directory, fileName);
+        Files.createDirectories(filePath.getParent());
+        Files.copy(file.getInputStream(), filePath);
+
+        // Save the Video entity
+        Video video = new Video();
+        video.setTitle(title);
+        video.setFilePath(filePath.toString());
+        video.setModule(module);
+
+        Video savedVideo = videoRepository.save(video);
+
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(savedVideo.getVideoId()).toUri();
+        return ResponseEntity.created(location).build();
+    }
+
+    public Video findVideoByIdForModule(Long moduleId, Long videoId) {
+        return videoRepository.findById(videoId)
+            .filter(video -> video.getModule().getModuleId().equals(moduleId))
+            .orElseThrow(() -> new VideoNotFoundException("Video with videoId: " + videoId + " does not exist or does not belong to the specified module"));
+    }
+
+    public ResponseEntity<Video> deleteVideoByIdForModule(Long moduleId, Long videoId) {
+        Video video = findVideoByIdForModule(moduleId, videoId);
+        videoRepository.delete(video);
+        return ResponseEntity.noContent().build();
+    }
+
+    public Video updateVideoByIdForModule(Long moduleId, Long videoId, String title, MultipartFile file) throws IOException {
+        Video existingVideo = findVideoByIdForModule(moduleId, videoId);
+
+        if (title != null && !title.isEmpty()) {
+            existingVideo.setTitle(title);
+        }
+
+        if (file != null && !file.isEmpty()) {
+            // Save the new file
+            String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+            String directory = uploadDir + "module_" + moduleId + "/";
+            Path filePath = Paths.get(directory, fileName);
+            Files.createDirectories(filePath.getParent());
+            Files.copy(file.getInputStream(), filePath);
+
+            existingVideo.setFilePath(filePath.toString());
+        }
+
+        return videoRepository.save(existingVideo);
+    }
+
+	public static void main(String[] args) {
+		VideoNotFoundException
+	}
+}

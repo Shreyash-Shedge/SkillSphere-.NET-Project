@@ -1,0 +1,5 @@
+package com.example.skillsphere.annotations;
+
+public @interface FutureOrToday {
+
+}
